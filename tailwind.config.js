@@ -1,4 +1,3 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{js,jsx}"],
   theme: {
@@ -23,7 +22,7 @@ module.exports = {
       bermuda: "#78dcca",
     },
     fontFamily: {
-      sans: ["ui-sans-serif", "system-ui"],
+      sans: ["Montserrat", "ui-sans-serif", "system-ui"],
       serif: ["ui-serif", "Georgia"],
     },
   },
