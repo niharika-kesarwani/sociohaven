@@ -10,6 +10,9 @@ module.exports = {
       "2xl": "1536px",
     },
     colors: {
+      primary: "#a855f7",
+      secondary: "#c4b5fd",
+      background: "#f3f4f6",
       transparent: "transparent",
       current: "currentColor",
       white: "#ffffff",
