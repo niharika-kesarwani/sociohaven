@@ -39,13 +39,15 @@ export const Login = () => {
       </div>
       <div className="md:w-1/2 px-[5%] flex items-center justify-center">
         <div className="max-w-md flex flex-col gap-y-5">
-          <h1 className="self-center text-primary font-bold">SOCIOHAVEN</h1>
+          <h1 className="text-4xl self-center text-primary font-bold">
+            SOCIOHAVEN
+          </h1>
           <h1 className="self-center">Log In</h1>
           <form className="flex flex-col gap-y-5" onSubmit={handleLoginSubmit}>
             <label htmlFor="username">Username*</label>
             <input
               autoComplete="on"
-              className="px-2 border border-primary rounded"
+              className="px-2 py-1 border border-primary rounded"
               id="username"
               name="username"
               onChange={handleInput}
@@ -56,7 +58,7 @@ export const Login = () => {
             <div className="flex relative">
               <input
                 autoComplete="on"
-                className="grow px-2 border border-primary rounded"
+                className="grow px-2 py-1 border border-primary rounded"
                 id="password"
                 name="password"
                 onChange={handleInput}
@@ -72,16 +74,16 @@ export const Login = () => {
             </div>
             <button
               type="submit"
-              className="border bg-secondary border-primary rounded hover:bg-primary"
+              className="py-1 border bg-secondary border-primary rounded hover:bg-primary"
             >
               Log In
             </button>
             <button
               type="submit"
-              className="border bg-secondary border-primary rounded hover:bg-primary"
+              className="py-1 border bg-secondary border-primary rounded hover:bg-primary"
               onClick={() => setUserLoginDetails(guestUserDetails)}
             >
-              Guest Mode
+              Login with Test Credentials
             </button>
             <button className="self-center flex gap-x-5 hover:text-primary">
               <p>Don't have an account?</p>
