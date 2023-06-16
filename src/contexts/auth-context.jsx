@@ -67,7 +67,7 @@ export const AuthProvider = ({ children }) => {
     });
 
   const signUpHandler = async ({
-    email,
+    username,
     password,
     confirmPassword,
     firstName,
@@ -79,7 +79,7 @@ export const AuthProvider = ({ children }) => {
     } else {
       try {
         const response = await signUpAuthService(
-          email,
+          username,
           password,
           firstName,
           lastName
@@ -87,19 +87,18 @@ export const AuthProvider = ({ children }) => {
 
         const {
           status,
-          data: { encodedToken },
+          data: { encodedToken, foundUser },
         } = response;
 
         if (status === 201) {
           localStorage.setItem(
             "loginDetails",
-            JSON.stringify({
-              token: encodedToken,
-            })
+            JSON.stringify({ user: foundUser, token: encodedToken })
           );
+          setCurrentUser(foundUser);
           setToken(encodedToken);
-          toast.success("Successfully signed up! Kindly login to continue!");
-          navigate("/login");
+          toast.success("Successfully signed up!");
+          navigate(location?.state?.from?.pathname ?? "/");
         }
       } catch (err) {
         const {
@@ -107,7 +106,7 @@ export const AuthProvider = ({ children }) => {
         } = err;
         if (status === 422) {
           toast.error(
-            "User email already exists! Please try signing up with another email!"
+            "Username already exists! Please try signing up with another username!"
           );
         } else {
           console.error(err);
