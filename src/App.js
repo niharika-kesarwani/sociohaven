@@ -1,10 +1,7 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
-import {
-  CurrentUserRequiresAuth,
-  TokenRequiresAuth,
-} from "./components/RequiresAuth";
+import { RequiresAuth } from "./components/RequiresAuth";
 import { Login } from "./pages/Login";
 import { SignUp } from "./pages/SignUp";
 import { PageWrapper } from "./components/PageWrapper";
