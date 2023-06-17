@@ -87,17 +87,16 @@ export const AuthProvider = ({ children }) => {
 
         const {
           status,
-          data: { encodedToken, foundUser },
+          data: { encodedToken },
         } = response;
 
         if (status === 201) {
           localStorage.setItem(
             "loginDetails",
-            JSON.stringify({ user: foundUser, token: encodedToken })
+            JSON.stringify({ token: encodedToken })
           );
-          setCurrentUser(foundUser);
           setToken(encodedToken);
-          toast.success("Successfully signed up!");
+          toast.success("Successfully signed up! Kindly login to continue!");
           navigate(location?.state?.from?.pathname ?? "/");
         }
       } catch (err) {

@@ -20,11 +20,13 @@ function App() {
         <Route
           path="/"
           element={
-            <RequiresAuth>
-              <PageWrapper>
-                <Home />
-              </PageWrapper>
-            </RequiresAuth>
+            <TokenRequiresAuth>
+              <CurrentUserRequiresAuth>
+                <PageWrapper>
+                  <Home />
+                </PageWrapper>
+              </CurrentUserRequiresAuth>
+            </TokenRequiresAuth>
           }
         />
         <Route path="/login" element={<Login />} />
