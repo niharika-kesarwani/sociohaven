@@ -1,7 +1,10 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
-import { RequiresAuth } from "./components/RequiresAuth";
+import {
+  CurrentUserRequiresAuth,
+  TokenRequiresAuth,
+} from "./components/RequiresAuth";
 import { Login } from "./pages/Login";
 import { SignUp } from "./pages/SignUp";
 import { PageWrapper } from "./components/PageWrapper";
@@ -20,11 +23,13 @@ function App() {
         <Route
           path="/"
           element={
-            <RequiresAuth>
-              <PageWrapper>
-                <Home />
-              </PageWrapper>
-            </RequiresAuth>
+            <TokenRequiresAuth>
+              <CurrentUserRequiresAuth>
+                <PageWrapper>
+                  <Home />
+                </PageWrapper>
+              </CurrentUserRequiresAuth>
+            </TokenRequiresAuth>
           }
         />
         <Route path="/login" element={<Login />} />
