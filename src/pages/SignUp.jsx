@@ -53,7 +53,7 @@ export const SignUp = () => {
                 id="firstName"
                 name="firstName"
                 onChange={handleInput}
-                placeholder="User"
+                placeholder="Eg: Akanksha"
                 required
                 type="text"
               />
@@ -66,7 +66,7 @@ export const SignUp = () => {
                 id="lastName"
                 name="lastName"
                 onChange={handleInput}
-                placeholder="Guest"
+                placeholder="Eg: Choudhary"
                 required
                 type="text"
               />
@@ -79,7 +79,7 @@ export const SignUp = () => {
                 id="username"
                 name="username"
                 onChange={handleInput}
-                placeholder="userguest"
+                placeholder="Eg: ch_akanksha"
                 required
                 type="text"
               />
@@ -93,7 +93,7 @@ export const SignUp = () => {
                   id="password"
                   name="password"
                   onChange={handleInput}
-                  placeholder="*********"
+                  placeholder="Eg: ch_akanksha"
                   required
                   type={signUp ? "text" : "password"}
                 />
@@ -114,7 +114,7 @@ export const SignUp = () => {
                   id="confirmPassword"
                   name="confirmPassword"
                   onChange={handleInput}
-                  placeholder="*********"
+                  placeholder="Eg: ch_akanksha"
                   required
                   type={signUpConfirm ? "text" : "password"}
                 />
