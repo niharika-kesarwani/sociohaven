@@ -18,8 +18,8 @@ export const Login = () => {
   });
 
   const guestUserDetails = {
-    username: "sociohaven",
-    password: "sociohaven123",
+    username: "Niharika_twt",
+    password: "Niharika_twt",
   };
 
   const handleInput = (e) =>
@@ -52,7 +52,7 @@ export const Login = () => {
               id="username"
               name="username"
               onChange={handleInput}
-              placeholder={guestUserDetails.username}
+              placeholder={`Eg: ${guestUserDetails.username}`}
               type="text"
             />
             <label htmlFor="password">Password*</label>
@@ -63,7 +63,7 @@ export const Login = () => {
                 id="password"
                 name="password"
                 onChange={handleInput}
-                placeholder={guestUserDetails.password}
+                placeholder={`Eg: ${guestUserDetails.password}`}
                 type={login ? "text" : "password"}
               />
               <div
