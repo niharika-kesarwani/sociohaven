@@ -1,12 +1,10 @@
 import { Header } from "./Header";
-import { Footer } from "./Footer";
 
 export const PageWrapper = ({ children }) => {
   return (
-    <div>
+    <div className="flex flex-col h-screen w-full">
       <Header />
-      {children}
-      <Footer />
+      <div className="max-w-screen-xl mx-auto w-full h-full">{children}</div>
     </div>
   );
 };

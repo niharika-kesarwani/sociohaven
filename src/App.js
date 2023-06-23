@@ -9,7 +9,7 @@ import { Home } from "./pages/Home";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App min-h-screen flex flex-col justify-between  mx-auto text-center">
       <Toaster
         position="top-center"
         reverseOrder={false}
