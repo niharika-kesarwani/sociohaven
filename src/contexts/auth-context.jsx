@@ -96,7 +96,9 @@ export const AuthProvider = ({ children }) => {
             JSON.stringify({ token: encodedToken })
           );
           setToken(encodedToken);
-          toast.success(`Successfully signed up as ${username}! Kindly login to continue!`);
+          toast.success(
+            `Successfully signed up as ${username}! Kindly login to continue!`
+          );
           navigate(location?.state?.from?.pathname ?? "/");
         }
       } catch (err) {

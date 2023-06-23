@@ -1,15 +1,19 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
-import { TokenRequiresAuth, CurrentUserRequiresAuth  } from "./components/RequiresAuth";
+import {
+  TokenRequiresAuth,
+  CurrentUserRequiresAuth,
+} from "./components/RequiresAuth";
 import { Login } from "./pages/Login";
 import { SignUp } from "./pages/SignUp";
 import { PageWrapper } from "./components/PageWrapper";
 import { Home } from "./pages/Home";
+import { Explore } from "./pages/Explore";
 
 function App() {
   return (
-    <div className="App min-h-screen flex flex-col justify-between  mx-auto text-center">
+    <div className="App mx-auto flex min-h-screen flex-col justify-between text-center">
       <Toaster
         position="top-center"
         reverseOrder={false}
@@ -24,6 +28,18 @@ function App() {
               <CurrentUserRequiresAuth>
                 <PageWrapper>
                   <Home />
+                </PageWrapper>
+              </CurrentUserRequiresAuth>
+            </TokenRequiresAuth>
+          }
+        />
+        <Route
+          path="/explore"
+          element={
+            <TokenRequiresAuth>
+              <CurrentUserRequiresAuth>
+                <PageWrapper>
+                  <Explore />
                 </PageWrapper>
               </CurrentUserRequiresAuth>
             </TokenRequiresAuth>
