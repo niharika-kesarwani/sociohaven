@@ -5,8 +5,9 @@ import App from "./App";
 import { makeServer } from "./server";
 import { BrowserRouter as Router } from "react-router-dom";
 import { AuthProvider, useAuth } from "./contexts/auth-context";
+import { UserProvider, useUser } from "./contexts/user-context";
 
-export { useAuth };
+export { useAuth, useUser };
 
 // Call make Server
 makeServer();
@@ -16,7 +17,9 @@ root.render(
   <React.StrictMode>
     <Router>
       <AuthProvider>
-        <App />
+        <UserProvider>
+          <App />
+        </UserProvider>
       </AuthProvider>
     </Router>
   </React.StrictMode>

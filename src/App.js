@@ -10,6 +10,9 @@ import { SignUp } from "./pages/SignUp";
 import { PageWrapper } from "./components/PageWrapper";
 import { Home } from "./pages/Home";
 import { Explore } from "./pages/Explore";
+import { Bookmarks } from "./pages/Bookmarks";
+import { Liked } from "./pages/Liked";
+import { Profile } from "./pages/Profile";
 
 function App() {
   return (
@@ -43,6 +46,40 @@ function App() {
                 </PageWrapper>
               </CurrentUserRequiresAuth>
             </TokenRequiresAuth>
+          }
+        />
+        <Route
+          path="/bookmarks"
+          element={
+            <TokenRequiresAuth>
+              <CurrentUserRequiresAuth>
+                <PageWrapper>
+                  <Bookmarks />
+                </PageWrapper>
+              </CurrentUserRequiresAuth>
+            </TokenRequiresAuth>
+          }
+        />
+        <Route
+          path="/liked"
+          element={
+            <TokenRequiresAuth>
+              <CurrentUserRequiresAuth>
+                <PageWrapper>
+                  <Liked />
+                </PageWrapper>
+              </CurrentUserRequiresAuth>
+            </TokenRequiresAuth>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <CurrentUserRequiresAuth>
+              <PageWrapper>
+                <Profile />
+              </PageWrapper>
+            </CurrentUserRequiresAuth>
           }
         />
         <Route path="/login" element={<Login />} />

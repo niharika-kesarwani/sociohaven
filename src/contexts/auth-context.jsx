@@ -40,7 +40,7 @@ export const AuthProvider = ({ children }) => {
         setCurrentUser(foundUser);
         setToken(encodedToken);
         toast.success(`Successfully signed in as ${username}!`);
-        navigate(location?.state?.from?.pathname ?? "/");
+        navigate("/");
       }
     } catch (err) {
       const {
@@ -99,7 +99,7 @@ export const AuthProvider = ({ children }) => {
           toast.success(
             `Successfully signed up as ${username}! Kindly login to continue!`
           );
-          navigate(location?.state?.from?.pathname ?? "/");
+          navigate("/");
         }
       } catch (err) {
         const {
