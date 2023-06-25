@@ -167,16 +167,6 @@ export const likePostHandler = function (schema, request) {
         }
       );
     }
-    const {
-      _id,
-      firstName,
-      lastName,
-      username,
-      createdAt,
-      updatedAt,
-      followers,
-      following,
-    } = user;
     const postId = request.params.postId;
     const post = schema.posts.findBy({ _id: postId }).attrs;
     if (post.likes.likedBy.some((currUser) => currUser._id === user._id)) {
@@ -190,16 +180,7 @@ export const likePostHandler = function (schema, request) {
       (currUser) => currUser._id !== user._id
     );
     post.likes.likeCount += 1;
-    post.likes.likedBy.push({
-      _id,
-      firstName,
-      lastName,
-      username,
-      createdAt,
-      updatedAt,
-      followers,
-      following,
-    });
+    post.likes.likedBy.push(user);
     this.db.posts.update({ _id: postId }, { ...post, updatedAt: formatDate() });
     return new Response(201, {}, { posts: this.db.posts });
   } catch (error) {
