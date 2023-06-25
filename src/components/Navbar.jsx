@@ -17,7 +17,7 @@ export const Navbar = () => {
   } = useAuth();
 
   return (
-    <div className="absolute bottom-0 flex w-full items-center justify-around bg-secondary py-2 md:bottom-auto md:left-0 md:h-full md:w-auto md:flex-col md:justify-normal md:gap-y-10 md:px-2 md:py-10">
+    <div className="absolute bottom-0 flex w-full items-center justify-around border-r py-2 md:bottom-auto md:left-0 md:h-full md:w-auto md:flex-col md:justify-normal md:gap-y-10 md:px-2 md:py-10">
       <NavLink
         to="/"
         title="Home"
@@ -41,7 +41,7 @@ export const Navbar = () => {
         />
       </NavLink>
       <div
-        className="flex h-10 w-10 items-center justify-center rounded-full hover:cursor-pointer hover:bg-primary"
+        className="flex h-10 w-10 items-center justify-center rounded-full hover:cursor-pointer hover:bg-primary md:order-1"
         title="Add a Post"
       >
         <AddCircleOutlineOutlinedIcon />
