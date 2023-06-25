@@ -16,7 +16,7 @@ export const Navbar = () => {
 
   return (
     <div className="sticky bottom-0 w-full border-r md:bottom-auto md:left-0 md:h-full md:w-auto">
-      <div className="flex justify-around py-2 md:flex-col md:gap-5 md:px-4 md:py-5">
+      <div className="flex justify-around bg-secondary py-1 md:flex-col md:gap-5 md:bg-transparent md:px-4 md:py-5">
         <NavLink
           to="/"
           title="Home"
