@@ -6,7 +6,7 @@ export const AddNewPost = () => {
   } = useAuth();
 
   return (
-    <div className="flex w-full flex-col justify-between gap-5 rounded-lg bg-background p-5 md:mt-10">
+    <div className="flex w-full flex-col justify-between gap-3 rounded-lg bg-background p-5 md:mt-3">
       <div className="flex w-full justify-between gap-5">
         <div className="h-10 w-10 rounded-full">
           <img
