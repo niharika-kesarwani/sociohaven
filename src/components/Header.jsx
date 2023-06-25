@@ -3,7 +3,7 @@ import favicon from "../assets/favicon.png";
 
 export const Header = () => {
   return (
-    <div className="flex items-center justify-between py-3 shadow-xl md:px-5 md:py-4">
+    <div className="sticky top-0 z-20 flex items-center justify-between py-3 shadow-xl md:px-5 md:py-4">
       <div className="mx-auto flex w-full max-w-screen-xl flex-col items-center justify-between gap-2 md:flex-row md:gap-3">
         <NavLink className="flex items-center gap-4" to="/">
           <img src={favicon} className="h-10 w-10 rounded-full" alt="logo" />

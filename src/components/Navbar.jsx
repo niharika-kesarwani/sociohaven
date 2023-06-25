@@ -15,12 +15,12 @@ export const Navbar = () => {
   } = useAuth();
 
   return (
-    <div className="absolute bottom-0 w-full border-r md:bottom-auto md:left-0 md:h-full md:w-auto">
-      <div className="flex justify-around py-2 md:flex-col md:gap-5 md:px-2 md:py-5">
+    <div className="sticky bottom-0 w-full border-r md:bottom-auto md:left-0 md:h-full md:w-auto">
+      <div className="flex justify-around py-2 md:flex-col md:gap-5 md:px-4 md:py-5">
         <NavLink
           to="/"
           title="Home"
-          className="flex items-center gap-2 rounded-full px-4 py-2 hover:bg-primary"
+          className="flex items-center gap-2 rounded-full p-2 hover:bg-primary"
         >
           <FooterIcon
             inactiveIcon={<HomeOutlinedIcon />}
@@ -32,7 +32,7 @@ export const Navbar = () => {
         <NavLink
           to="/explore"
           title="Explore"
-          className="flex items-center gap-2 rounded-full px-4 py-2 hover:bg-primary"
+          className="flex items-center gap-2 rounded-full p-2 hover:bg-primary"
         >
           <FooterIcon
             inactiveIcon={<ExploreOutlinedIcon />}
@@ -42,18 +42,16 @@ export const Navbar = () => {
           <span className="hidden text-lg font-bold lg:inline">Explore</span>
         </NavLink>
         <NavLink
-          className="flex items-center gap-2 rounded-full px-4 py-2 hover:cursor-pointer hover:bg-primary md:order-1"
-          title="Add a Post"
+          className="flex items-center gap-2 rounded-full p-2 hover:cursor-pointer hover:bg-primary md:order-1"
+          title="Add New Post"
         >
           <AddCircleOutlineOutlinedIcon />
-          <span className="hidden text-lg font-bold lg:inline">
-            Add New Post
-          </span>
+          <span className="hidden text-lg font-bold lg:inline">New Post</span>
         </NavLink>
         <NavLink
           to="/bookmarks"
           title="Bookmarks"
-          className="flex items-center gap-2 rounded-full px-4 py-2 hover:bg-primary"
+          className="flex items-center gap-2 rounded-full p-2 hover:bg-primary"
         >
           <FooterIcon
             inactiveIcon={<BookmarkBorderOutlinedIcon />}
@@ -65,7 +63,7 @@ export const Navbar = () => {
         <NavLink
           to="/profile"
           title="Profile"
-          className="flex items-center gap-2 rounded-full px-4 py-2 hover:cursor-pointer hover:bg-primary"
+          className="flex items-center gap-2 rounded-full p-2 hover:cursor-pointer hover:bg-primary"
         >
           <div className="h-6 w-6 rounded-full">
             <img

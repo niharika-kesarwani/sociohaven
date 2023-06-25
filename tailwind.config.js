@@ -8,6 +8,7 @@ module.exports = {
       lg: "976px",
       xl: "1440px",
       "2xl": "1536px",
+      "3xl": "2560px",
     },
     colors: {
       primary: "#a855f7",

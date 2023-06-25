@@ -1,3 +1,19 @@
+::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #a855f7;
+  border-radius: 100vw;
+}
+
+@supports (scrollbar-color: #a855f7 transparent) {
+  * {
+    scrollbar-color: #a855f7 transparent;
+    scrollbar-width: thin;
+  }
+}
+
 h1 {
   font-size: 1.25rem;
 }
