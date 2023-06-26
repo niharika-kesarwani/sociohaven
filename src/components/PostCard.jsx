@@ -11,7 +11,7 @@ export const PostCard = ({ post }) => {
   } = post;
 
   return (
-    <div>
+    <div className="break-all border">
       {content} {createdAt} {likeCount}
     </div>
   );
