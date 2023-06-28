@@ -20,7 +20,7 @@ export const Navbar = () => {
         <NavLink
           to="/"
           title="Home"
-          className="flex items-center gap-2 rounded-full p-2 hover:bg-primary"
+          className="flex items-center gap-2 rounded-full px-4 py-2 hover:bg-primary"
         >
           <FooterIcon
             inactiveIcon={<HomeOutlinedIcon />}
@@ -32,7 +32,7 @@ export const Navbar = () => {
         <NavLink
           to="/explore"
           title="Explore"
-          className="flex items-center gap-2 rounded-full p-2 hover:bg-primary"
+          className="flex items-center gap-2 rounded-full px-4 py-2 hover:bg-primary"
         >
           <FooterIcon
             inactiveIcon={<ExploreOutlinedIcon />}
@@ -42,7 +42,7 @@ export const Navbar = () => {
           <span className="hidden text-lg font-bold lg:inline">Explore</span>
         </NavLink>
         <NavLink
-          className="flex items-center gap-2 rounded-full p-2 hover:cursor-pointer hover:bg-primary md:order-1"
+          className="flex items-center gap-2 rounded-full px-4 py-2 hover:cursor-pointer hover:bg-primary md:order-1"
           title="Add New Post"
         >
           <AddCircleOutlineOutlinedIcon />
@@ -51,7 +51,7 @@ export const Navbar = () => {
         <NavLink
           to="/bookmarks"
           title="Bookmarks"
-          className="flex items-center gap-2 rounded-full p-2 hover:bg-primary"
+          className="flex items-center gap-2 rounded-full px-4 py-2 hover:bg-primary"
         >
           <FooterIcon
             inactiveIcon={<BookmarkBorderOutlinedIcon />}
@@ -63,7 +63,7 @@ export const Navbar = () => {
         <NavLink
           to="/profile"
           title="Profile"
-          className="flex items-center gap-2 rounded-full p-2 hover:cursor-pointer hover:bg-primary"
+          className="flex items-center gap-2 rounded-full px-4 py-2 hover:cursor-pointer hover:bg-primary"
         >
           <div className="h-6 w-6 rounded-full">
             <img

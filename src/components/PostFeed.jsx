@@ -12,10 +12,10 @@ export const PostFeed = () => {
   const { SET_SELECTED_SORT } = postConstants;
 
   return (
-    <div className="flex grow justify-center overflow-y-auto border-r p-5">
+    <div className="flex grow justify-center overflow-y-auto border-r px-3 py-5 md:px-5">
       <div className="flex w-full max-w-lg flex-col gap-5">
         <AddNewPost />
-        <div className="flex justify-around rounded-lg bg-background">
+        <div className="flex justify-around bg-background">
           <div
             className={`h-full w-full py-3 font-bold hover:cursor-pointer hover:bg-secondary ${
               selectedSort === "Latest" ? "bg-primary" : null
@@ -37,9 +37,11 @@ export const PostFeed = () => {
             Trending
           </div>
         </div>
-        {sortedPosts(allPosts)?.map((post) => (
-          <PostCard post={post} />
-        ))}
+        <ul className="flex flex-col gap-5">
+          {sortedPosts(allPosts)?.map((post) => (
+            <PostCard post={post} key={post?._id} />
+          ))}
+        </ul>
       </div>
     </div>
   );

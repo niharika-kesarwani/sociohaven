@@ -1,4 +1,3 @@
 import axios from "axios";
 
-export const userHandlerService = async (userId) =>
-  await axios.get(`/api/users/${userId}`);
+export const allUsersHandlerService = async () => await axios.get("/api/users");

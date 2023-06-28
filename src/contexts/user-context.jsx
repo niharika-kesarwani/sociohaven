@@ -1,25 +1,41 @@
-import { createContext, useContext } from "react";
-import { userHandlerService } from "../services/user-service";
+import { createContext, useContext, useEffect, useReducer } from "react";
+import { allUsersHandlerService } from "../services/user-service";
+import { initialUser, userReducer } from "../reducers/user-reducer";
+import { userConstants } from "../constants/user-constants";
 
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-  const getUserHandler = async (userId) => {
+  const [user, setUser] = useReducer(userReducer, initialUser);
+  const { GET_ALL_USERS } = userConstants;
+
+  const getAllUsersHandler = async () => {
     try {
-      const response = await userHandlerService(userId);
+      const response = await allUsersHandlerService();
       const {
-        data: { user },
         status,
+        data: { users },
       } = response;
       if (status === 200) {
+        setUser({ type: GET_ALL_USERS, payload: users });
       }
     } catch (err) {
       console.error(err);
     }
   };
 
+  useEffect(() => {
+    getAllUsersHandler();
+  }, []);
+
   return (
-    <UserContext.Provider value={{ getUserHandler }}>
+    <UserContext.Provider
+      value={{
+        user,
+        setUser,
+        getAllUsersHandler,
+      }}
+    >
       {children}
     </UserContext.Provider>
   );
