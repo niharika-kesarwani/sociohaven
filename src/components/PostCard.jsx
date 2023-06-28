@@ -41,7 +41,7 @@ export const PostCard = ({ post }) => {
 
   return (
     <div
-      className="flex w-full gap-2 break-all rounded-lg bg-background px-2 py-3 text-xs md:gap-3 md:px-3 md:pt-5 md:text-base"
+      className="flex w-full gap-2 break-words rounded-lg bg-background px-2 py-3 text-xs md:gap-3 md:px-3 md:pt-5 md:text-base"
       onClick={() => setShowMorePost(false)}
     >
       <div className="h-10 w-10 rounded-full">

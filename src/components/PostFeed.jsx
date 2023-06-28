@@ -1,15 +1,23 @@
-import { usePost } from "../index";
+import { usePost, useAuth } from "../index";
 import { postConstants } from "../constants/post-constants";
 import { AddNewPost } from "./AddNewPost";
 import { PostCard } from "../components/PostCard";
 
 export const PostFeed = () => {
+  const { currentUser } = useAuth();
   const {
     post: { allPosts, selectedSort },
     setPost,
     sortedPosts,
   } = usePost();
   const { SET_SELECTED_SORT } = postConstants;
+
+  const displayPosts = allPosts?.filter(
+    (post) =>
+      currentUser?.following?.some(
+        ({ username }) => username === post.username
+      ) || post?.username === currentUser?.username
+  );
 
   return (
     <div className="flex grow justify-center overflow-y-auto border-r px-3 py-5 md:px-5">
@@ -38,7 +46,7 @@ export const PostFeed = () => {
           </div>
         </div>
         <ul className="flex flex-col gap-5">
-          {sortedPosts(allPosts)?.map((post) => (
+          {sortedPosts(displayPosts)?.map((post) => (
             <PostCard post={post} key={post?._id} />
           ))}
         </ul>
