@@ -13,9 +13,12 @@ export const PostProvider = ({ children }) => {
     try {
       const response = await getAllPostsService();
       const {
+        status,
         data: { posts },
       } = response;
-      setPost({ payload: SET_ALL_POSTS, item: posts });
+      if (status === 200) {
+        setPost({ type: SET_ALL_POSTS, payload: posts });
+      }
     } catch (err) {
       console.error(err);
     }

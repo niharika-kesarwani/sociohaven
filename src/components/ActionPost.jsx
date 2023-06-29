@@ -6,8 +6,10 @@ import BookmarkOutlinedIcon from "@mui/icons-material/BookmarkOutlined";
 import LinkIcon from "@mui/icons-material/Link";
 import { calculateLikes } from "../utils/calculateLikes";
 import { toast } from "react-hot-toast";
+import { useUser } from "../index";
 
 export const ActionPost = ({ selectedPost }) => {
+  const { isPostBookmarked, addToBookmarksHandler } = useUser();
   const {
     _id,
     content,
@@ -21,7 +23,7 @@ export const ActionPost = ({ selectedPost }) => {
 
   const sharePostHandler = () => {
     navigator.clipboard.writeText(`https://sociohaven.netlify.app/post/${_id}`);
-    toast.success("Link copied to clipboard.");
+    toast.success("Link copied to clipboard!");
   };
 
   return (
@@ -38,12 +40,16 @@ export const ActionPost = ({ selectedPost }) => {
         )}
         <div>{calculateLikes(likeCount)}</div>
       </div>
-      <div className="hover:cursor-pointer hover:text-[green]">
-        {/* change logic here */}
-        {likeCount > 0 ? (
-          <BookmarkBorderOutlinedIcon />
-        ) : (
+      <div
+        className={`hover:cursor-pointer hover:text-[green] ${
+          isPostBookmarked(_id) ? "text-[green]" : null
+        }`}
+        onClick={() => addToBookmarksHandler(_id)}
+      >
+        {isPostBookmarked(_id) ? (
           <BookmarkOutlinedIcon />
+        ) : (
+          <BookmarkBorderOutlinedIcon />
         )}
       </div>
       <div

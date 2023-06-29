@@ -1,0 +1,33 @@
+import { useUser, usePost, useAuth } from "../index";
+import { PostCard } from "../components/PostCard";
+
+export const BookmarkFeed = () => {
+  const { currentUser } = useAuth();
+  const {
+    user: { allBookmarks },
+  } = useUser();
+  const {
+    post: { allPosts },
+  } = usePost();
+
+  return (
+    <div className="flex grow justify-center overflow-y-auto border-r px-3 py-5 md:px-5">
+      <div className="flex w-full max-w-lg flex-col items-start gap-5">
+        <div className="flex flex-col items-start">
+          <div className="text-2xl font-bold">Bookmarks</div>
+          <div className="text-sm text-[gray]">@{currentUser?.username}</div>
+        </div>
+        {allBookmarks?.length > 0 ? (
+          <ul className="flex flex-col gap-5">
+            {allBookmarks?.map((indPost) => {
+              const post = allPosts?.find(({ _id }) => _id === indPost?._id);
+              return <PostCard post={post} key={post?._id} />;
+            })}
+          </ul>
+        ) : (
+          <div className="text-xl font-bold">No bookmarks added yet!</div>
+        )}
+      </div>
+    </div>
+  );
+};
