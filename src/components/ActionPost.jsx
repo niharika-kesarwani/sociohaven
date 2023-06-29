@@ -9,7 +9,11 @@ import { toast } from "react-hot-toast";
 import { useUser } from "../index";
 
 export const ActionPost = ({ selectedPost }) => {
-  const { isPostBookmarked, addToBookmarksHandler } = useUser();
+  const {
+    isPostBookmarked,
+    addToBookmarksHandler,
+    removeFromBookmarksHandler,
+  } = useUser();
   const {
     _id,
     content,
@@ -44,7 +48,11 @@ export const ActionPost = ({ selectedPost }) => {
         className={`hover:cursor-pointer hover:text-[green] ${
           isPostBookmarked(_id) ? "text-[green]" : null
         }`}
-        onClick={() => addToBookmarksHandler(_id)}
+        onClick={() =>
+          isPostBookmarked(_id)
+            ? removeFromBookmarksHandler(_id)
+            : addToBookmarksHandler(_id)
+        }
       >
         {isPostBookmarked(_id) ? (
           <BookmarkOutlinedIcon />

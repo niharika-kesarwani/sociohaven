@@ -13,3 +13,10 @@ export const addToBookmarksHandlerService = async (postId, token) =>
       headers: { authorization: token },
     }
   );
+
+export const removeFromBookmarksHandlerService = async (postId, token) =>
+  await axios.post(
+    `/api/users/remove-bookmark/${postId}`,
+    {},
+    { headers: { authorization: token } }
+  );

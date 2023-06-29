@@ -29,7 +29,7 @@ export const PostFeed = () => {
               selectedSort === "Latest" ? "bg-primary" : null
             }`}
             onClick={() =>
-              setPost({ payload: SET_SELECTED_SORT, item: "Latest" })
+              setPost({ type: SET_SELECTED_SORT, payload: "Latest" })
             }
           >
             Latest
@@ -39,7 +39,7 @@ export const PostFeed = () => {
               selectedSort === "Trending" ? "bg-primary" : null
             }`}
             onClick={() =>
-              setPost({ payload: SET_SELECTED_SORT, item: "Trending" })
+              setPost({ type: SET_SELECTED_SORT, payload: "Trending" })
             }
           >
             Trending
