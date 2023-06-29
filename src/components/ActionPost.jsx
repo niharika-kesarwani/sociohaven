@@ -5,6 +5,7 @@ import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlin
 import BookmarkOutlinedIcon from "@mui/icons-material/BookmarkOutlined";
 import LinkIcon from "@mui/icons-material/Link";
 import { calculateLikes } from "../utils/calculateLikes";
+import { toast } from "react-hot-toast";
 
 export const ActionPost = ({ selectedPost }) => {
   const {
@@ -17,6 +18,11 @@ export const ActionPost = ({ selectedPost }) => {
     updatedAt,
     comments,
   } = selectedPost;
+
+  const sharePostHandler = () => {
+    navigator.clipboard.writeText(`https://sociohaven.netlify.app/post/${_id}`);
+    toast.success("Link copied to clipboard.");
+  };
 
   return (
     <div className="mt-3 flex w-full items-center justify-between text-[gray] sm:w-auto sm:gap-14">
@@ -40,7 +46,10 @@ export const ActionPost = ({ selectedPost }) => {
           <BookmarkOutlinedIcon />
         )}
       </div>
-      <div className="-rotate-45 hover:cursor-pointer hover:text-[black]">
+      <div
+        className="-rotate-45 hover:cursor-pointer hover:text-[black]"
+        onClick={sharePostHandler}
+      >
         <LinkIcon />
       </div>
     </div>
