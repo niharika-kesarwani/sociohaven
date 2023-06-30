@@ -20,3 +20,17 @@ export const removeFromBookmarksHandlerService = async (postId, token) =>
     {},
     { headers: { authorization: token } }
   );
+
+export const followUserHandlerService = async (followUserId, token) =>
+  await axios.post(
+    `/api/users/follow/${followUserId}`,
+    {},
+    { headers: { authorization: token } }
+  );
+
+export const unfollowUserHandlerService = async (followUserId, token) =>
+  await axios.post(
+    `/api/users/unfollow/${followUserId}`,
+    {},
+    { headers: { authorization: token } }
+  );

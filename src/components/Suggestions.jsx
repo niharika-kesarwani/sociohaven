@@ -7,10 +7,14 @@ export const Suggestions = () => {
     user: { allUsers },
   } = useUser();
 
+  const updatedCurrentUser = allUsers?.find(
+    ({ username }) => username === currentUser?.username
+  );
+
   const suggestedUsers = allUsers?.filter(
     (singleUser) =>
-      singleUser?.username !== currentUser?.username &&
-      !currentUser?.following?.some(
+      singleUser?.username !== updatedCurrentUser?.username &&
+      !updatedCurrentUser?.following?.some(
         ({ username }) => username === singleUser?.username
       )
   );
@@ -21,7 +25,7 @@ export const Suggestions = () => {
         <div className="hidden flex-col gap-5 overflow-y-auto p-5 large:flex">
           <div className="font-bold lg:text-xl">Suggested Users</div>
           <div className="flex flex-col gap-5">
-            {suggestedUsers?.map((user) => (
+            {[...suggestedUsers]?.map((user) => (
               <SuggestedUserCard user={user} key={user?._id} />
             ))}
           </div>

@@ -23,6 +23,7 @@ export const PostCard = ({ post }) => {
   } = post;
 
   const selectedUser = allUsers?.find((user) => user?.username === username);
+
   const {
     // _id,
     firstName,

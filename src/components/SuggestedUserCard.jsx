@@ -1,4 +1,7 @@
+import { useUser } from "../";
+
 export const SuggestedUserCard = ({ user }) => {
+  const { followUserHandler } = useUser();
   const {
     _id,
     firstName,
@@ -30,7 +33,10 @@ export const SuggestedUserCard = ({ user }) => {
         <div className="line-clamp-1 text-[gray]">@{username}</div>
       </div>
       <div>
-        <button className="rounded-full bg-secondary px-3 py-1 font-bold hover:cursor-pointer hover:bg-primary">
+        <button
+          className="rounded-full bg-secondary px-3 py-1 font-bold hover:cursor-pointer hover:bg-primary"
+          onClick={() => followUserHandler(_id)}
+        >
           Follow
         </button>
       </div>

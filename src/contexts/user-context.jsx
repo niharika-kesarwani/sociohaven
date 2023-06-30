@@ -5,6 +5,8 @@ import {
   allUsersBookmarksHandlerService,
   addToBookmarksHandlerService,
   removeFromBookmarksHandlerService,
+  followUserHandlerService,
+  unfollowUserHandlerService,
 } from "../services/user-service";
 import { initialUser, userReducer } from "../reducers/user-reducer";
 import { userConstants } from "../constants/user-constants";
@@ -20,6 +22,8 @@ export const UserProvider = ({ children }) => {
     GET_ALL_BOOKMARKS,
     ADD_TO_BOOKMARKS,
     REMOVE_FROM_BOOKMARKS,
+    FOLLOW_USER,
+    UNFOLLOW_USER,
   } = userConstants;
 
   const getAllUsersHandler = async () => {
@@ -87,6 +91,39 @@ export const UserProvider = ({ children }) => {
     }
   };
 
+  const followUserHandler = async (followUserId) => {
+    try {
+      const response = await followUserHandlerService(followUserId, token);
+      const {
+        status,
+        data: { user, followUser },
+      } = response;
+      if (status === 200) {
+        setUser({ type: FOLLOW_USER, payload: [user, followUser] });
+        toast.success(`Successfully followed ${followUser?.username}!`);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const unfollowUserHandler = async (followUserId) => {
+    try {
+      const response = await unfollowUserHandlerService(followUserId, token);
+      console.log(response);
+      const {
+        status,
+        data: { user, followUser },
+      } = response;
+      if (status === 200) {
+        setUser({ type: UNFOLLOW_USER, payload: [user, followUser] });
+        toast.success(`Successfully unfollowed ${followUser?.username}!`);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   useEffect(() => {
     getAllUsersHandler();
     if (token) {
@@ -104,6 +141,8 @@ export const UserProvider = ({ children }) => {
         isPostBookmarked,
         addToBookmarksHandler,
         removeFromBookmarksHandler,
+        followUserHandler,
+        unfollowUserHandler,
       }}
     >
       {children}

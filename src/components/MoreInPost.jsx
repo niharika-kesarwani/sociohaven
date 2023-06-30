@@ -3,11 +3,21 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 import PersonRemoveIcon from "@mui/icons-material/PersonRemove";
 
-import { useAuth } from "../index";
+import { useAuth, useUser } from "../index";
 
-export const MoreInPost = ({ selectedUser: { username } }) => {
+export const MoreInPost = ({ selectedUser: { _id, username } }) => {
   const { currentUser } = useAuth();
-  const isFollower = currentUser?.following?.find(
+  const {
+    user: { allUsers },
+    followUserHandler,
+    unfollowUserHandler,
+  } = useUser();
+
+  const updatedCurrentUser = allUsers?.find(
+    ({ username }) => username === currentUser?.username
+  );
+
+  const isFollower = updatedCurrentUser?.following?.find(
     (user) => user?.username === username
   );
 
@@ -16,7 +26,7 @@ export const MoreInPost = ({ selectedUser: { username } }) => {
       className="absolute -top-1 right-0 overflow-hidden rounded bg-secondary"
       onClick={(e) => e.stopPropagation()}
     >
-      {currentUser?.username === username ? (
+      {updatedCurrentUser?.username === username ? (
         <div className="over flex flex-col items-start font-bold">
           <div className="flex w-full items-center gap-3 px-3 py-2 hover:cursor-pointer hover:bg-primary">
             <div>
@@ -32,14 +42,20 @@ export const MoreInPost = ({ selectedUser: { username } }) => {
           </div>
         </div>
       ) : isFollower ? (
-        <div className="flex w-full items-center gap-3 px-3 py-2 hover:cursor-pointer hover:bg-primary">
+        <div
+          className="flex w-full items-center gap-3 px-3 py-2 hover:cursor-pointer hover:bg-primary"
+          onClick={() => unfollowUserHandler(_id)}
+        >
           <div>
             <PersonRemoveIcon />
           </div>
           <div className="font-bold">Unfollow</div>
         </div>
       ) : (
-        <div className="flex w-full items-center gap-3 px-3 py-2 hover:cursor-pointer hover:bg-primary">
+        <div
+          className="flex w-full items-center gap-3 px-3 py-2 hover:cursor-pointer hover:bg-primary"
+          onClick={() => followUserHandler(_id)}
+        >
           <div>
             <PersonAddAlt1Icon />
           </div>

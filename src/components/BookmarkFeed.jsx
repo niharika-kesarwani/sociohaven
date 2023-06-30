@@ -2,7 +2,9 @@ import { useUser, usePost, useAuth } from "../index";
 import { PostCard } from "../components/PostCard";
 
 export const BookmarkFeed = () => {
-  const { currentUser } = useAuth();
+  const {
+    currentUser: { username },
+  } = useAuth();
   const {
     user: { allBookmarks },
   } = useUser();
@@ -15,7 +17,7 @@ export const BookmarkFeed = () => {
       <div className="flex w-full max-w-lg flex-col items-start gap-5">
         <div className="flex flex-col items-start">
           <div className="text-2xl font-bold">Bookmarks</div>
-          <div className="text-sm text-[gray]">@{currentUser?.username}</div>
+          <div className="text-sm text-[gray]">@{username}</div>
         </div>
         {allBookmarks?.length > 0 ? (
           <ul className="flex flex-col gap-5">

@@ -1,4 +1,4 @@
-import { usePost, useAuth } from "../index";
+import { usePost, useAuth, useUser } from "../index";
 import { postConstants } from "../constants/post-constants";
 import { AddNewPost } from "./AddNewPost";
 import { PostCard } from "../components/PostCard";
@@ -10,13 +10,20 @@ export const PostFeed = () => {
     setPost,
     sortedPosts,
   } = usePost();
+  const {
+    user: { allUsers },
+  } = useUser();
   const { SET_SELECTED_SORT } = postConstants;
+
+  const updatedCurrentUser = allUsers?.find(
+    ({ username }) => username === currentUser?.username
+  );
 
   const displayPosts = allPosts?.filter(
     (post) =>
-      currentUser?.following?.some(
+      updatedCurrentUser?.following?.some(
         ({ username }) => username === post.username
-      ) || post?.username === currentUser?.username
+      ) || post?.username === updatedCurrentUser?.username
   );
 
   return (

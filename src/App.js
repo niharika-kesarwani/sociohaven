@@ -11,7 +11,6 @@ import { PageWrapper } from "./components/PageWrapper";
 import { Home } from "./pages/Home";
 import { Explore } from "./pages/Explore";
 import { Bookmarks } from "./pages/Bookmarks";
-import { Liked } from "./pages/Liked";
 import { Profile } from "./pages/Profile";
 
 function App() {
@@ -55,18 +54,6 @@ function App() {
               <CurrentUserRequiresAuth>
                 <PageWrapper>
                   <Bookmarks />
-                </PageWrapper>
-              </CurrentUserRequiresAuth>
-            </TokenRequiresAuth>
-          }
-        />
-        <Route
-          path="/liked"
-          element={
-            <TokenRequiresAuth>
-              <CurrentUserRequiresAuth>
-                <PageWrapper>
-                  <Liked />
                 </PageWrapper>
               </CurrentUserRequiresAuth>
             </TokenRequiresAuth>
