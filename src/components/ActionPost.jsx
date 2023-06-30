@@ -6,7 +6,7 @@ import BookmarkOutlinedIcon from "@mui/icons-material/BookmarkOutlined";
 import LinkIcon from "@mui/icons-material/Link";
 import { calculateLikes } from "../utils/calculateLikes";
 import { toast } from "react-hot-toast";
-import { useUser } from "../index";
+import { usePost, useUser } from "../index";
 
 export const ActionPost = ({ selectedPost }) => {
   const {
@@ -14,6 +14,7 @@ export const ActionPost = ({ selectedPost }) => {
     addToBookmarksHandler,
     removeFromBookmarksHandler,
   } = useUser();
+  const { isPostLiked, likePostHandler, dislikePostHandler } = usePost();
   const {
     _id,
     content,
@@ -36,11 +37,20 @@ export const ActionPost = ({ selectedPost }) => {
         <ChatBubbleOutlineOutlinedIcon />
         {comments?.length > 0 && <div>{comments?.length}</div>}
       </div>
-      <div className="flex items-center gap-1 hover:cursor-pointer hover:text-[#ec4899]">
-        {likeCount > 0 ? (
-          <FavoriteBorderOutlinedIcon />
-        ) : (
+      <div
+        className={`flex items-center gap-1 hover:cursor-pointer hover:text-[#ec4899] ${
+          isPostLiked(selectedPost) ? "text-[#ec4899]" : null
+        }`}
+        onClick={() =>
+          isPostLiked(selectedPost)
+            ? dislikePostHandler(_id)
+            : likePostHandler(_id)
+        }
+      >
+        {isPostLiked(selectedPost) ? (
           <FavoriteOutlinedIcon />
+        ) : (
+          <FavoriteBorderOutlinedIcon />
         )}
         <div>{calculateLikes(likeCount)}</div>
       </div>

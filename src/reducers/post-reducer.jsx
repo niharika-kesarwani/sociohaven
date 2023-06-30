@@ -1,6 +1,11 @@
 import { postConstants } from "../constants/post-constants";
 
-const { SET_ALL_POSTS, SET_SELECTED_SORT } = postConstants;
+const {
+  SET_ALL_POSTS,
+  SET_SELECTED_SORT,
+  HANDLE_LIKE_POST,
+  HANDLE_DISLIKE_POST,
+} = postConstants;
 
 export const postReducer = (state, action) => {
   switch (action.type) {
@@ -8,6 +13,10 @@ export const postReducer = (state, action) => {
       return { ...state, allPosts: action.payload };
     case SET_SELECTED_SORT:
       return { ...state, selectedSort: action.payload };
+    case HANDLE_LIKE_POST:
+      return { ...state, allPosts: action.payload };
+    case HANDLE_DISLIKE_POST:
+      return { ...state, allPosts: action.payload };
     default:
       return state;
   }
