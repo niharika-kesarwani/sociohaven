@@ -110,7 +110,6 @@ export const UserProvider = ({ children }) => {
   const unfollowUserHandler = async (followUserId) => {
     try {
       const response = await unfollowUserHandlerService(followUserId, token);
-      console.log(response);
       const {
         status,
         data: { user, followUser },

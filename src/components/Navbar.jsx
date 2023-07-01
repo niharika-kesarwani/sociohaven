@@ -7,12 +7,15 @@ import AddCircleOutlineOutlinedIcon from "@mui/icons-material/AddCircleOutlineOu
 import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
 import BookmarkOutlinedIcon from "@mui/icons-material/BookmarkOutlined";
 import FooterIcon from "./FooterIcon";
-import { useAuth } from "../index";
+import { useAuth, usePost } from "../index";
+import { postConstants } from "../constants/post-constants";
 
 export const Navbar = () => {
   const {
     currentUser: { profileAvatar },
   } = useAuth();
+  const { setPost } = usePost();
+  const { SET_SHOW_ADD_NEW_POST_MODAL } = postConstants;
 
   return (
     <div className="sticky bottom-0 w-full border-r md:bottom-auto md:left-0 md:h-full md:w-auto">
@@ -44,6 +47,9 @@ export const Navbar = () => {
         <NavLink
           className="flex items-center gap-2 rounded-full px-4 py-2 hover:cursor-pointer md:order-1 lg:hover:bg-primary"
           title="Add New Post"
+          onClick={() =>
+            setPost({ type: SET_SHOW_ADD_NEW_POST_MODAL, payload: true })
+          }
         >
           <AddCircleOutlineOutlinedIcon />
           <span className="hidden text-lg font-bold lg:inline">New Post</span>
