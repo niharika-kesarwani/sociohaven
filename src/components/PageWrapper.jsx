@@ -1,7 +1,16 @@
 import { Navbar } from "./Navbar";
 import { Header } from "./Header";
+import { usePost } from "../index";
+import { postConstants } from "../constants/post-constants";
+import { AddNewPost } from "./AddNewPost";
 
 export const PageWrapper = ({ children }) => {
+  const {
+    post: { showAddNewPostModal },
+    setPost,
+  } = usePost();
+  const { SET_SHOW_ADD_NEW_POST_MODAL } = postConstants;
+
   return (
     <div className="flex h-screen w-full flex-col">
       <Header />
@@ -9,6 +18,16 @@ export const PageWrapper = ({ children }) => {
         <div className="h-full w-full md:order-1">{children}</div>
         <Navbar />
       </div>
+      {showAddNewPostModal && (
+        <div
+          className="fixed inset-0 z-50 flex h-screen items-center justify-center bg-[black] bg-opacity-50"
+          onClick={() =>
+            setPost({ type: SET_SHOW_ADD_NEW_POST_MODAL, payload: false })
+          }
+        >
+          <AddNewPost modalClass="m-5" />
+        </div>
+      )}
     </div>
   );
 };

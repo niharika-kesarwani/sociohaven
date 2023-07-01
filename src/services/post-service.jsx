@@ -15,3 +15,10 @@ export const dislikePostHandlerService = async (postId, token) =>
     {},
     { headers: { authorization: token } }
   );
+
+export const createPostHandlerService = async (postData, token) =>
+  await axios.post(
+    "/api/posts",
+    { postData },
+    { headers: { authorization: token } }
+  );
