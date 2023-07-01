@@ -3,11 +3,11 @@ import { useAuth } from "../index";
 import LoginIcon from "@mui/icons-material/Login";
 import LogoutIcon from "@mui/icons-material/Logout";
 
-export const Footer = () => {
+export const Profile = () => {
   const { token, logoutHandler } = useAuth();
+
   return (
     <div>
-      Footer
       <NavLink
         title={token ? "Log out" : "Log in"}
         to={!token && "/login"}

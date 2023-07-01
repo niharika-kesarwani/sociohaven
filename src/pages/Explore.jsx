@@ -1,10 +1,10 @@
-import { PostFeed } from "../components/PostFeed";
+import { ExploreFeed } from "../components/ExploreFeed";
 import { Suggestions } from "../components/Suggestions";
 
-export const Home = () => {
+export const Explore = () => {
   return (
     <div className="flex h-full">
-      <PostFeed />
+      <ExploreFeed />
       <Suggestions />
     </div>
   );

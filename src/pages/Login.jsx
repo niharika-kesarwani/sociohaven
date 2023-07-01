@@ -34,13 +34,13 @@ export const Login = () => {
   };
 
   return (
-    <div className="bg-background min-h-screen grid grid-cols-1 md:grid-cols-2 grid-rows-1">
-      <div className="h-screen hidden md:block">
+    <div className="grid min-h-screen grid-cols-1 grid-rows-1 bg-background md:grid-cols-2">
+      <div className="hidden h-screen md:block">
         <AuthImage />
       </div>
-      <div className="px-[5%] flex items-center justify-center py-2">
-        <div className="max-w-md flex flex-col gap-y-5">
-          <h1 className="text-4xl self-center text-primary font-bold">
+      <div className="flex items-center justify-center px-[5%] py-2">
+        <div className="flex max-w-md flex-col gap-y-5">
+          <h1 className="self-center text-4xl font-bold text-primary">
             SOCIOHAVEN
           </h1>
           <h1 className="self-center">Log In</h1>
@@ -48,7 +48,7 @@ export const Login = () => {
             <label htmlFor="username">Username*</label>
             <input
               autoComplete="on"
-              className="px-2 py-1 border border-primary rounded"
+              className="rounded border border-primary px-2 py-1"
               id="username"
               name="username"
               onChange={handleInput}
@@ -56,10 +56,10 @@ export const Login = () => {
               type="text"
             />
             <label htmlFor="password">Password*</label>
-            <div className="flex relative">
+            <div className="relative flex">
               <input
                 autoComplete="on"
-                className="grow px-2 py-1 border border-primary rounded"
+                className="grow rounded border border-primary px-2 py-1"
                 id="password"
                 name="password"
                 onChange={handleInput}
@@ -75,19 +75,19 @@ export const Login = () => {
             </div>
             <button
               type="submit"
-              className="py-1 border bg-secondary border-primary rounded hover:bg-primary"
+              className="rounded border border-primary bg-secondary py-1 hover:bg-primary"
             >
               Log In
             </button>
             <button
               type="submit"
-              className="py-1 border bg-secondary border-primary rounded hover:bg-primary"
+              className="rounded border border-primary bg-secondary py-1 hover:bg-primary"
               onClick={() => setUserLoginDetails(guestUserDetails)}
             >
               Login with Test Credentials
             </button>
             <NavLink to="/signup">
-              <button className="self-center flex gap-x-5 hover:text-primary">
+              <button className="flex gap-x-5 self-center hover:text-primary">
                 <p>Don't have an account?</p>
                 <p>Signup</p>
               </button>

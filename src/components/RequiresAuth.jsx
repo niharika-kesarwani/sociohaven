@@ -12,7 +12,9 @@ export const CurrentUserRequiresAuth = ({ children }) => {
   const { currentUser } = useAuth();
   const location = useLocation();
 
-  return currentUser ? children : <Navigate to="/login" state={{ from: location }} />
-  ;
+  return currentUser ? (
+    children
+  ) : (
+    <Navigate to="/login" state={{ from: location }} />
+  );
 };
-

@@ -1,10 +1,10 @@
-import { PostFeed } from "../components/PostFeed";
+import { BookmarkFeed } from "../components/BookmarkFeed";
 import { Suggestions } from "../components/Suggestions";
 
-export const Home = () => {
+export const Bookmarks = () => {
   return (
     <div className="flex h-full">
-      <PostFeed />
+      <BookmarkFeed />
       <Suggestions />
     </div>
   );
