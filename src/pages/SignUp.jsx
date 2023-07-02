@@ -34,48 +34,51 @@ export const SignUp = () => {
   };
 
   return (
-    <div className="grid min-h-screen grid-cols-1 grid-rows-1 bg-background md:grid-cols-2">
+    <div className="grid min-h-screen grid-cols-1 grid-rows-1 bg-background md:grid-cols-2 lg:max-h-screen">
       <div className="hidden md:block">
         <AuthImage />
       </div>
-      <div className="flex items-center justify-center px-[5%] py-5">
-        <div className="flex max-w-md flex-col gap-y-5">
-          <h1 className="self-center text-4xl font-bold text-primary">
-            SOCIOHAVEN
-          </h1>
-          <h1 className="self-center">Sign Up</h1>
-          <form className="flex flex-col gap-y-5" onSubmit={handleSignUpSubmit}>
-            <div className="flex flex-col gap-y-3">
-              <label htmlFor="firstName">First Name</label>
-              <input
-                autoComplete="on"
-                className="rounded border border-primary px-2 py-0.5"
-                id="firstName"
-                name="firstName"
-                onChange={handleInput}
-                placeholder="Eg: Akanksha"
-                required
-                type="text"
-              />
+      <div className="flex items-center justify-center py-5">
+        <div className="flex max-w-md flex-col gap-5">
+          <h1 className="text-4xl font-bold text-primary">SOCIOHAVEN</h1>
+          <h1 className="font-bold uppercase">Sign Up</h1>
+          <form
+            className="flex flex-col gap-5 rounded-lg bg-secondary bg-opacity-40 p-5 text-start"
+            onSubmit={handleSignUpSubmit}
+          >
+            <div className="flex flex-col gap-3 lg:flex-row">
+              <div className="flex flex-col gap-3">
+                <label htmlFor="firstName">First Name</label>
+                <input
+                  autoComplete="on"
+                  className="w-full rounded border border-primary px-2 py-1"
+                  id="firstName"
+                  name="firstName"
+                  onChange={handleInput}
+                  placeholder="Eg: Akanksha"
+                  required
+                  type="text"
+                />
+              </div>
+              <div className="flex flex-col gap-3">
+                <label htmlFor="lastName">Last Name</label>
+                <input
+                  autoComplete="on"
+                  className="w-full rounded border border-primary px-2 py-1"
+                  id="lastName"
+                  name="lastName"
+                  onChange={handleInput}
+                  placeholder="Eg: Choudhary"
+                  required
+                  type="text"
+                />
+              </div>
             </div>
-            <div className="flex flex-col gap-y-3">
-              <label htmlFor="lastName">Last Name</label>
-              <input
-                autoComplete="on"
-                className="rounded border  border-primary px-2 py-0.5"
-                id="lastName"
-                name="lastName"
-                onChange={handleInput}
-                placeholder="Eg: Choudhary"
-                required
-                type="text"
-              />
-            </div>
-            <div className="flex flex-col gap-y-3">
+            <div className="flex flex-col gap-3">
               <label htmlFor="username">Username</label>
               <input
                 autoComplete="on"
-                className="rounded border border-primary px-2 py-0.5"
+                className="rounded border border-primary px-2 py-1"
                 id="username"
                 name="username"
                 onChange={handleInput}
@@ -84,49 +87,51 @@ export const SignUp = () => {
                 type="text"
               />
             </div>
-            <div className="flex flex-col gap-y-3">
-              <label htmlFor="password">Password</label>
-              <div className="relative flex">
-                <input
-                  autoComplete="on"
-                  className="grow rounded border border-primary px-2 py-0.5"
-                  id="password"
-                  name="password"
-                  onChange={handleInput}
-                  placeholder="Eg: ch_akanksha"
-                  required
-                  type={signUp ? "text" : "password"}
-                />
-                <div
-                  className="absolute right-1 top-0.5 hover:cursor-pointer"
-                  onClick={() => toggleSignUpPassword()}
-                >
-                  {signUp ? <VisibilityOffIcon /> : <VisibilityIcon />}
+            <div className="flex flex-col gap-3 lg:flex-row">
+              <div className="flex flex-col gap-3">
+                <label htmlFor="password">Password</label>
+                <div className="relative flex">
+                  <input
+                    autoComplete="on"
+                    className="w-full rounded border border-primary px-2 py-1"
+                    id="password"
+                    name="password"
+                    onChange={handleInput}
+                    placeholder="Eg: ch_akanksha"
+                    required
+                    type={signUp ? "text" : "password"}
+                  />
+                  <div
+                    className="absolute right-0 top-1/2 -translate-x-1/2 -translate-y-1/2 hover:cursor-pointer"
+                    onClick={() => toggleSignUpPassword()}
+                  >
+                    {signUp ? <VisibilityOffIcon /> : <VisibilityIcon />}
+                  </div>
+                </div>
+              </div>
+              <div className="flex flex-col gap-3">
+                <label htmlFor="confirmPassword">Confirm Password</label>
+                <div className="relative flex">
+                  <input
+                    autoComplete="on"
+                    className="w-full rounded border border-primary px-2 py-1"
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    onChange={handleInput}
+                    placeholder="Eg: ch_akanksha"
+                    required
+                    type={signUpConfirm ? "text" : "password"}
+                  />
+                  <div
+                    className="absolute right-0 top-1/2 -translate-x-1/2 -translate-y-1/2 hover:cursor-pointer"
+                    onClick={() => toggleSignUpConfirmPassword()}
+                  >
+                    {signUpConfirm ? <VisibilityOffIcon /> : <VisibilityIcon />}
+                  </div>
                 </div>
               </div>
             </div>
-            <div className="flex flex-col gap-y-3">
-              <label htmlFor="confirmPassword">Confirm Password</label>
-              <div className="relative flex">
-                <input
-                  autoComplete="on"
-                  className="grow rounded  border border-primary px-2 py-0.5"
-                  id="confirmPassword"
-                  name="confirmPassword"
-                  onChange={handleInput}
-                  placeholder="Eg: ch_akanksha"
-                  required
-                  type={signUpConfirm ? "text" : "password"}
-                />
-                <div
-                  className="absolute right-1 top-0.5 hover:cursor-pointer"
-                  onClick={() => toggleSignUpConfirmPassword()}
-                >
-                  {signUpConfirm ? <VisibilityOffIcon /> : <VisibilityIcon />}
-                </div>
-              </div>
-            </div>
-            <div className="flex items-center justify-center gap-x-2">
+            <div className="flex items-center justify-center gap-2">
               <input
                 type="checkbox"
                 className="hover:cursor-pointer"
@@ -142,7 +147,7 @@ export const SignUp = () => {
               <h3>Sign Up</h3>
             </button>
             <NavLink to="/login">
-              <button className="flex gap-x-5 self-center hover:text-primary">
+              <button className="flex gap-5 self-center hover:text-primary">
                 <h3>Already have an account? Login</h3>
                 <ChevronRightIcon />
               </button>

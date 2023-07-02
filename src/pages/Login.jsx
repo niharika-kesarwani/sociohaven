@@ -38,13 +38,16 @@ export const Login = () => {
       <div className="hidden h-screen md:block">
         <AuthImage />
       </div>
-      <div className="flex items-center justify-center px-[5%] py-2">
-        <div className="flex max-w-md flex-col gap-y-5">
+      <div className="flex items-center justify-center py-2">
+        <div className="flex max-w-md flex-col gap-4">
           <h1 className="self-center text-4xl font-bold text-primary">
             SOCIOHAVEN
           </h1>
-          <h1 className="self-center">Log In</h1>
-          <form className="flex flex-col gap-y-5" onSubmit={handleLoginSubmit}>
+          <h1 className="self-center font-bold uppercase">Log In</h1>
+          <form
+            className="flex flex-col gap-4 rounded-lg bg-secondary bg-opacity-40 p-5"
+            onSubmit={handleLoginSubmit}
+          >
             <label htmlFor="username">Username*</label>
             <input
               autoComplete="on"
@@ -87,7 +90,7 @@ export const Login = () => {
               Login with Test Credentials
             </button>
             <NavLink to="/signup">
-              <button className="flex gap-x-5 self-center hover:text-primary">
+              <button className="flex gap-5 self-center hover:text-primary">
                 <p>Don't have an account?</p>
                 <p>Signup</p>
               </button>
