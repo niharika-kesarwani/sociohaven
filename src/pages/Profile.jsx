@@ -1,20 +1,11 @@
-import { NavLink } from "react-router-dom";
-import { useAuth } from "../index";
-import LoginIcon from "@mui/icons-material/Login";
-import LogoutIcon from "@mui/icons-material/Logout";
+import { ProfileFeed } from "../components/ProfileFeed";
+import { Suggestions } from "../components/Suggestions";
 
 export const Profile = () => {
-  const { token, logoutHandler } = useAuth();
-
   return (
-    <div>
-      <NavLink
-        title={token ? "Log out" : "Log in"}
-        to={!token && "/login"}
-        onClick={token && logoutHandler}
-      >
-        {token ? <LogoutIcon /> : <LoginIcon />}
-      </NavLink>
+    <div className="flex h-full">
+      <ProfileFeed />
+      <Suggestions />
     </div>
   );
 };
