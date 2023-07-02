@@ -8,20 +8,25 @@ const {
   CREATE_POST,
   SET_SHOW_ADD_NEW_POST_MODAL,
   DELETE_POST,
+  EDIT_POST,
+  UPDATED_POSTS,
 } = postConstants;
 
-export const postReducer = (state, action) => {
-  switch (action.type) {
+export const postReducer = (state, { type, payload }) => {
+  switch (type) {
     case SET_ALL_POSTS:
     case HANDLE_LIKE_POST:
     case HANDLE_DISLIKE_POST:
     case CREATE_POST:
     case DELETE_POST:
-      return { ...state, allPosts: action.payload };
+    case UPDATED_POSTS:
+      return { ...state, allPosts: payload };
     case SET_SELECTED_SORT:
-      return { ...state, selectedSort: action.payload };
+      return { ...state, selectedSort: payload };
     case SET_SHOW_ADD_NEW_POST_MODAL:
-      return { ...state, showAddNewPostModal: action.payload };
+      return { ...state, showAddNewPostModal: payload };
+    case EDIT_POST:
+      return { ...state, toEditPost: payload };
     default:
       return state;
   }
@@ -31,4 +36,5 @@ export const initialPost = {
   allPosts: [],
   selectedSort: "Latest",
   showAddNewPostModal: false,
+  toEditPost: null,
 };

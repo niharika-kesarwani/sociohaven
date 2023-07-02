@@ -9,7 +9,7 @@ export const PageWrapper = ({ children }) => {
     post: { showAddNewPostModal },
     setPost,
   } = usePost();
-  const { SET_SHOW_ADD_NEW_POST_MODAL } = postConstants;
+  const { SET_SHOW_ADD_NEW_POST_MODAL, EDIT_POST } = postConstants;
 
   return (
     <div className="flex h-screen w-full flex-col">
@@ -21,9 +21,10 @@ export const PageWrapper = ({ children }) => {
       {showAddNewPostModal && (
         <div
           className="fixed inset-0 z-50 flex h-screen items-center justify-center bg-[black] bg-opacity-50"
-          onClick={() =>
-            setPost({ type: SET_SHOW_ADD_NEW_POST_MODAL, payload: false })
-          }
+          onClick={() => {
+            setPost({ type: SET_SHOW_ADD_NEW_POST_MODAL, payload: false });
+            setPost({ type: EDIT_POST, payload: null });
+          }}
         >
           <AddNewPost modalClass="m-5" />
         </div>
