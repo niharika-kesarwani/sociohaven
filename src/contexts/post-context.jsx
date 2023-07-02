@@ -6,6 +6,7 @@ import {
   dislikePostHandlerService,
   createPostHandlerService,
   deletePostHandlerService,
+  editPostHandlerService,
 } from "../services/post-service";
 import { postConstants } from "../constants/post-constants";
 import { useAuth } from "../index";
@@ -21,6 +22,7 @@ export const PostProvider = ({ children }) => {
     HANDLE_DISLIKE_POST,
     CREATE_POST,
     DELETE_POST,
+    UPDATED_POSTS,
   } = postConstants;
   const { token, currentUser } = useAuth();
 
@@ -109,6 +111,22 @@ export const PostProvider = ({ children }) => {
     }
   };
 
+  const editPostHandler = async (postId, postData) => {
+    try {
+      const response = await editPostHandlerService(postId, postData, token);
+      const {
+        status,
+        data: { posts },
+      } = response;
+      if (status === 201) {
+        setPost({ type: UPDATED_POSTS, payload: posts });
+        toast.success("Updated post successfully!");
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   const sortedPosts = (posts) => {
     const { selectedSort } = post;
     if (selectedSort === "Latest") {
@@ -136,6 +154,7 @@ export const PostProvider = ({ children }) => {
         dislikePostHandler,
         createPostHandler,
         deletePostHandler,
+        editPostHandler,
         sortedPosts,
       }}
     >

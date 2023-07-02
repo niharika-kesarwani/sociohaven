@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth, usePost } from "../index";
 import { postConstants } from "../constants/post-constants";
 
@@ -7,15 +7,31 @@ export const AddNewPost = ({ modalClass }) => {
   const {
     currentUser: { profileAvatar },
   } = useAuth();
-  const { createPostHandler, setPost } = usePost();
-  const { SET_SHOW_ADD_NEW_POST_MODAL } = postConstants;
+  const {
+    post: { toEditPost },
+    setPost,
+    createPostHandler,
+    editPostHandler,
+  } = usePost();
+  const { SET_SHOW_ADD_NEW_POST_MODAL, EDIT_POST } = postConstants;
 
   const formSubmitHandler = (e) => {
     e.preventDefault();
-    createPostHandler({ content: postContent });
+    if (toEditPost) {
+      editPostHandler(toEditPost?._id, { content: postContent });
+    } else {
+      createPostHandler({ content: postContent });
+    }
     setPost({ type: SET_SHOW_ADD_NEW_POST_MODAL, payload: false });
+    setPost({ type: EDIT_POST, payload: null });
     setPostContent("");
   };
+
+  useEffect(() => {
+    if (toEditPost) {
+      setPostContent(toEditPost.content);
+    }
+  }, []);
 
   return (
     <div
@@ -48,7 +64,7 @@ export const AddNewPost = ({ modalClass }) => {
           disabled={postContent === ""}
           style={{ cursor: postContent === "" && "not-allowed" }}
         >
-          Post
+          {toEditPost ? "Update" : "Post"}
         </button>
       </form>
     </div>
