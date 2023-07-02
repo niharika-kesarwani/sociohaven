@@ -4,6 +4,7 @@ import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 import PersonRemoveIcon from "@mui/icons-material/PersonRemove";
 
 import { useAuth, usePost, useUser } from "../index";
+import { postConstants } from "../constants/post-constants";
 
 export const MoreInPost = ({
   selectedUser: { _id, username },
@@ -16,7 +17,8 @@ export const MoreInPost = ({
     unfollowUserHandler,
     removeFromBookmarksHandler,
   } = useUser();
-  const { deletePostHandler } = usePost();
+  const { setPost, deletePostHandler } = usePost();
+  const { SET_SHOW_ADD_NEW_POST_MODAL, EDIT_POST } = postConstants;
 
   const updatedCurrentUser = allUsers?.find(
     ({ username }) => username === currentUser?.username
@@ -33,7 +35,13 @@ export const MoreInPost = ({
     >
       {updatedCurrentUser?.username === username ? (
         <div className="over flex flex-col items-start font-bold">
-          <div className="flex w-full items-center gap-3 px-3 py-2 hover:cursor-pointer hover:bg-primary">
+          <div
+            className="flex w-full items-center gap-3 px-3 py-2 hover:cursor-pointer hover:bg-primary"
+            onClick={() => {
+              setPost({ type: EDIT_POST, payload: selectedPost });
+              setPost({ type: SET_SHOW_ADD_NEW_POST_MODAL, payload: true });
+            }}
+          >
             <div>
               <EditSharpIcon />
             </div>
