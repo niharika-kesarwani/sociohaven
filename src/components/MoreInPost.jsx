@@ -3,15 +3,20 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 import PersonRemoveIcon from "@mui/icons-material/PersonRemove";
 
-import { useAuth, useUser } from "../index";
+import { useAuth, usePost, useUser } from "../index";
 
-export const MoreInPost = ({ selectedUser: { _id, username } }) => {
+export const MoreInPost = ({
+  selectedUser: { _id, username },
+  selectedPost,
+}) => {
   const { currentUser } = useAuth();
   const {
     user: { allUsers },
     followUserHandler,
     unfollowUserHandler,
+    removeFromBookmarksHandler,
   } = useUser();
+  const { deletePostHandler } = usePost();
 
   const updatedCurrentUser = allUsers?.find(
     ({ username }) => username === currentUser?.username
@@ -34,7 +39,13 @@ export const MoreInPost = ({ selectedUser: { _id, username } }) => {
             </div>
             <div>Edit</div>
           </div>
-          <div className="flex w-full items-center gap-3 px-3 py-2 text-[red] hover:cursor-pointer hover:bg-primary">
+          <div
+            className="flex w-full items-center gap-3 px-3 py-2 text-[red] hover:cursor-pointer hover:bg-primary"
+            onClick={() => {
+              deletePostHandler(selectedPost._id);
+              removeFromBookmarksHandler(selectedPost._id, true);
+            }}
+          >
             <div>
               <DeleteIcon />
             </div>

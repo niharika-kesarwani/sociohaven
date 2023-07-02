@@ -20,7 +20,7 @@ export const BookmarkFeed = () => {
           <div className="text-sm text-[gray]">@{username}</div>
         </div>
         {allBookmarks?.length > 0 ? (
-          <ul className="flex flex-col gap-5">
+          <ul className="flex w-full flex-col gap-5">
             {[...allBookmarks]?.reverse()?.map((indPost) => {
               const post = allPosts?.find(({ _id }) => _id === indPost?._id);
               return <PostCard post={post} key={post?._id} />;

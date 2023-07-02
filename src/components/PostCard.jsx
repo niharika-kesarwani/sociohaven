@@ -70,7 +70,9 @@ export const PostCard = ({ post }) => {
             <MoreHorizIcon />
           </div>
         </div>
-        {showMorePost && <MoreInPost selectedUser={selectedUser} />}
+        {showMorePost && (
+          <MoreInPost selectedUser={selectedUser} selectedPost={post} />
+        )}
         <div className="text-start">{content}</div>
         {post?.mediaURL &&
           (post?.mediaURL.split("/")[4] === "image" ? (

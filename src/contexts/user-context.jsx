@@ -75,7 +75,7 @@ export const UserProvider = ({ children }) => {
     }
   };
 
-  const removeFromBookmarksHandler = async (postId) => {
+  const removeFromBookmarksHandler = async (postId, doNotShowToast) => {
     try {
       const response = await removeFromBookmarksHandlerService(postId, token);
       const {
@@ -84,7 +84,8 @@ export const UserProvider = ({ children }) => {
       } = response;
       if (status === 200) {
         setUser({ type: REMOVE_FROM_BOOKMARKS, payload: bookmarks });
-        toast.success("Removed from bookmarks successfully!");
+        !doNotShowToast &&
+          toast.success("Removed from bookmarks successfully!");
       }
     } catch (err) {
       console.error(err);

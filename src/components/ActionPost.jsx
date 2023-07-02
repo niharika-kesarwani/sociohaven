@@ -52,7 +52,7 @@ export const ActionPost = ({ selectedPost }) => {
         ) : (
           <FavoriteBorderOutlinedIcon />
         )}
-        <div>{calculateLikes(likeCount) > 0 && calculateLikes(likeCount)}</div>
+        <div>{likeCount > 0 && calculateLikes(likeCount)}</div>
       </div>
       <div
         className={`hover:cursor-pointer hover:text-[green] ${

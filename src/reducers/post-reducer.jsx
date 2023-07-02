@@ -7,6 +7,7 @@ const {
   HANDLE_DISLIKE_POST,
   CREATE_POST,
   SET_SHOW_ADD_NEW_POST_MODAL,
+  DELETE_POST,
 } = postConstants;
 
 export const postReducer = (state, action) => {
@@ -15,6 +16,7 @@ export const postReducer = (state, action) => {
     case HANDLE_LIKE_POST:
     case HANDLE_DISLIKE_POST:
     case CREATE_POST:
+    case DELETE_POST:
       return { ...state, allPosts: action.payload };
     case SET_SELECTED_SORT:
       return { ...state, selectedSort: action.payload };

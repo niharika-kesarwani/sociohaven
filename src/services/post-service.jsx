@@ -22,3 +22,8 @@ export const createPostHandlerService = async (postData, token) =>
     { postData },
     { headers: { authorization: token } }
   );
+
+export const deletePostHandlerService = async (postId, token) =>
+  await axios.delete(`/api/posts/${postId}`, {
+    headers: { authorization: token },
+  });

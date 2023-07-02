@@ -5,6 +5,7 @@ import {
   likePostHandlerService,
   dislikePostHandlerService,
   createPostHandlerService,
+  deletePostHandlerService,
 } from "../services/post-service";
 import { postConstants } from "../constants/post-constants";
 import { useAuth } from "../index";
@@ -14,8 +15,13 @@ export const PostContext = createContext();
 
 export const PostProvider = ({ children }) => {
   const [post, setPost] = useReducer(postReducer, initialPost);
-  const { SET_ALL_POSTS, HANDLE_LIKE_POST, HANDLE_DISLIKE_POST, CREATE_POST } =
-    postConstants;
+  const {
+    SET_ALL_POSTS,
+    HANDLE_LIKE_POST,
+    HANDLE_DISLIKE_POST,
+    CREATE_POST,
+    DELETE_POST,
+  } = postConstants;
   const { token, currentUser } = useAuth();
 
   const getAllPosts = async () => {
@@ -87,6 +93,22 @@ export const PostProvider = ({ children }) => {
     }
   };
 
+  const deletePostHandler = async (postId) => {
+    try {
+      const response = await deletePostHandlerService(postId, token);
+      const {
+        status,
+        data: { posts },
+      } = response;
+      if (status === 201) {
+        setPost({ type: DELETE_POST, payload: posts });
+        toast.success("Deleted post successfully!");
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   const sortedPosts = (posts) => {
     const { selectedSort } = post;
     if (selectedSort === "Latest") {
@@ -113,6 +135,7 @@ export const PostProvider = ({ children }) => {
         likePostHandler,
         dislikePostHandler,
         createPostHandler,
+        deletePostHandler,
         sortedPosts,
       }}
     >
