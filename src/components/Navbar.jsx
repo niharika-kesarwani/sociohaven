@@ -12,7 +12,7 @@ import { postConstants } from "../constants/post-constants";
 
 export const Navbar = () => {
   const {
-    currentUser: { profileAvatar },
+    currentUser: { username, profileAvatar },
   } = useAuth();
   const { setPost } = usePost();
   const { SET_SHOW_ADD_NEW_POST_MODAL } = postConstants;
@@ -67,7 +67,7 @@ export const Navbar = () => {
           <span className="hidden text-lg font-bold lg:inline">Bookmarks</span>
         </NavLink>
         <NavLink
-          to="/profile"
+          to={`/profile/${username}`}
           title="Profile"
           className="flex items-center gap-2 rounded-full px-4 py-2 hover:cursor-pointer lg:hover:bg-primary"
         >

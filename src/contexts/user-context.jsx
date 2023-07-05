@@ -7,6 +7,7 @@ import {
   removeFromBookmarksHandlerService,
   followUserHandlerService,
   unfollowUserHandlerService,
+  getAllUsersHandlerService,
 } from "../services/user-service";
 import { initialUser, userReducer } from "../reducers/user-reducer";
 import { userConstants } from "../constants/user-constants";
@@ -24,6 +25,7 @@ export const UserProvider = ({ children }) => {
     REMOVE_FROM_BOOKMARKS,
     FOLLOW_USER,
     UNFOLLOW_USER,
+    SET_SINGLE_USER,
   } = userConstants;
 
   const getAllUsersHandler = async () => {
@@ -124,6 +126,21 @@ export const UserProvider = ({ children }) => {
     }
   };
 
+  const getUserByUsername = async (username) => {
+    try {
+      const response = await getAllUsersHandlerService(username);
+      const {
+        status,
+        data: { user },
+      } = response;
+      if (status === 200) {
+        setUser({ type: SET_SINGLE_USER, payload: user });
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   useEffect(() => {
     getAllUsersHandler();
     if (token) {
@@ -143,6 +160,7 @@ export const UserProvider = ({ children }) => {
         removeFromBookmarksHandler,
         followUserHandler,
         unfollowUserHandler,
+        getUserByUsername,
       }}
     >
       {children}
