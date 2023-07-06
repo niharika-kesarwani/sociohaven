@@ -1,12 +1,11 @@
-import { NavLink, useParams } from "react-router-dom";
-import { useAuth, usePost, useUser } from "../index";
-import LoginIcon from "@mui/icons-material/Login";
-import LogoutIcon from "@mui/icons-material/Logout";
+import { usePost, useUser } from "../index";
 import { useEffect } from "react";
+import { ProfileDetails } from "../components/ProfileDetails";
+import { useParams } from "react-router-dom";
+import { PostCard } from "./PostCard";
 
 export const ProfileFeed = () => {
   const { username } = useParams();
-  const { token, currentUser, logoutHandler } = useAuth();
   const {
     post: { allPosts },
   } = usePost();
@@ -24,18 +23,14 @@ export const ProfileFeed = () => {
   }, [username, getUserByUsername]);
 
   return (
-    <div className="flex grow justify-center overflow-y-auto border-r px-3 py-5 md:px-5">
-      <div className="flex w-full max-w-lg flex-col items-start gap-5 bg-primary">
-        <div>
-          <NavLink
-            title={token ? "Log out" : "Log in"}
-            to={!token && "/login"}
-            onClick={token && logoutHandler}
-          >
-            {token ? <LogoutIcon /> : <LoginIcon />}
-            {username}
-          </NavLink>
-        </div>
+    <div className="flex grow justify-center overflow-y-auto border-r pb-5 text-xs md:px-5 md:text-base">
+      <div className="flex w-full max-w-lg flex-col items-start gap-5">
+        <ProfileDetails selectedUser={selectedUser} />
+        <ul className="flex flex-col gap-5 px-2 md:p-0">
+          {displayUserPosts?.map((post) => (
+            <PostCard post={post} />
+          ))}
+        </ul>
       </div>
     </div>
   );
