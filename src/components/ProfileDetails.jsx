@@ -1,14 +1,17 @@
 import { NavLink } from "react-router-dom";
 import LinkIcon from "@mui/icons-material/Link";
 import { useAuth, useUser } from "../index";
+import { userConstants } from "../constants/user-constants";
 
 export const ProfileDetails = ({ selectedUser }) => {
   const { token, currentUser, logoutHandler } = useAuth();
   const {
     user: { allUsers },
+    setUser,
     followUserHandler,
     unfollowUserHandler,
   } = useUser();
+  const { SET_SHOW_EDIT_PROFILE_MODAL } = userConstants;
   const {
     _id,
     firstName,
@@ -36,11 +39,15 @@ export const ProfileDetails = ({ selectedUser }) => {
 
   return (
     <div>
-      <img
-        src={backgroundImage}
-        className="w-full object-contain md:max-h-48"
-        alt="background_image"
-      />
+      {backgroundImage !== "" ? (
+        <img
+          src={backgroundImage}
+          className="w-full object-contain md:max-h-48"
+          alt="background_image"
+        />
+      ) : (
+        <div className="h-24 w-full bg-secondary md:h-40"></div>
+      )}
       <div className="relative flex p-3">
         <img
           className="absolute -top-8 left-3 h-16 w-16 rounded-full border-2 border-white md:-top-16 md:left-5 md:h-32 md:w-32 md:border-4"
@@ -50,7 +57,12 @@ export const ProfileDetails = ({ selectedUser }) => {
         <div className="flex w-full flex-col gap-2 text-left">
           {currentUser?.username === username ? (
             <div className="flex gap-2 self-end md:gap-5">
-              <div className="rounded-full border bg-background px-3 py-1 font-bold hover:cursor-pointer hover:bg-primary md:px-4 md:py-2">
+              <div
+                className="rounded-full border bg-background px-3 py-1 font-bold hover:cursor-pointer hover:bg-primary md:px-4 md:py-2"
+                onClick={() =>
+                  setUser({ type: SET_SHOW_EDIT_PROFILE_MODAL, payload: true })
+                }
+              >
                 Edit Profile
               </div>
               <NavLink
@@ -89,10 +101,12 @@ export const ProfileDetails = ({ selectedUser }) => {
           </NavLink>
           <div className="flex gap-5">
             <div>
-              <span className="font-bold">{following?.length}</span> Following
+              <span className="font-bold">{following?.length}</span>{" "}
+              <span className="text-[gray]">Following</span>
             </div>
             <div>
-              <span className="font-bold">{followers?.length}</span> Followers
+              <span className="font-bold">{followers?.length}</span>{" "}
+              <span className="text-[gray]">Followers</span>
             </div>
           </div>
         </div>

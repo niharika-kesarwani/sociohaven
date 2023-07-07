@@ -131,6 +131,7 @@ export const AuthProvider = ({ children }) => {
         token,
         currentUser,
         showPassword,
+        setCurrentUser,
         toggleLoginPassword,
         loginHandler,
         toggleSignUpPassword,

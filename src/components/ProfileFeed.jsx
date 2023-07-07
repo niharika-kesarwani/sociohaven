@@ -28,7 +28,7 @@ export const ProfileFeed = () => {
         <ProfileDetails selectedUser={selectedUser} />
         <ul className="flex flex-col gap-5 px-2 md:p-0">
           {displayUserPosts?.map((post) => (
-            <PostCard post={post} />
+            <PostCard post={post} key={post?._id} />
           ))}
         </ul>
       </div>

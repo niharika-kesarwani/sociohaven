@@ -37,3 +37,10 @@ export const unfollowUserHandlerService = async (followUserId, token) =>
 
 export const getAllUsersHandlerService = async (username) =>
   await axios.get(`/api/users/${username}`);
+
+export const editUserProfileService = async (userData, token) =>
+  await axios.post(
+    "/api/users/edit",
+    { userData },
+    { headers: { authorization: token } }
+  );

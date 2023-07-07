@@ -8,6 +8,8 @@ const {
   FOLLOW_USER,
   UNFOLLOW_USER,
   SET_SINGLE_USER,
+  SET_SHOW_EDIT_PROFILE_MODAL,
+  EDIT_USER_PROFILE,
 } = userConstants;
 
 export const userReducer = (state, { type, payload }) => {
@@ -31,6 +33,15 @@ export const userReducer = (state, { type, payload }) => {
       };
     case SET_SINGLE_USER:
       return { ...state, selectedUser: payload };
+    case SET_SHOW_EDIT_PROFILE_MODAL:
+      return { ...state, showEditProfileModal: payload };
+    case EDIT_USER_PROFILE:
+      return {
+        ...state,
+        allUsers: state?.allUsers?.map((user) =>
+          user._id === payload._id ? payload : user
+        ),
+      };
     default:
       return state;
   }
@@ -40,4 +51,5 @@ export const initialUser = {
   allUsers: [],
   allBookmarks: [],
   selectedUser: {},
+  showEditProfileModal: false,
 };

@@ -8,6 +8,7 @@ import {
   followUserHandlerService,
   unfollowUserHandlerService,
   getAllUsersHandlerService,
+  editUserProfileService,
 } from "../services/user-service";
 import { initialUser, userReducer } from "../reducers/user-reducer";
 import { userConstants } from "../constants/user-constants";
@@ -17,7 +18,7 @@ export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useReducer(userReducer, initialUser);
-  const { token } = useAuth();
+  const { token, setCurrentUser } = useAuth();
   const {
     GET_ALL_USERS,
     GET_ALL_BOOKMARKS,
@@ -26,6 +27,7 @@ export const UserProvider = ({ children }) => {
     FOLLOW_USER,
     UNFOLLOW_USER,
     SET_SINGLE_USER,
+    EDIT_USER_PROFILE,
   } = userConstants;
 
   const getAllUsersHandler = async () => {
@@ -141,6 +143,23 @@ export const UserProvider = ({ children }) => {
     }
   };
 
+  const editUserProfile = async (userData) => {
+    try {
+      const response = await editUserProfileService(userData, token);
+      const {
+        status,
+        data: { user },
+      } = response;
+      if (status === 201) {
+        setUser({ type: EDIT_USER_PROFILE, payload: user });
+        setCurrentUser(user);
+        toast.success("Successfully updated profile!");
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   useEffect(() => {
     getAllUsersHandler();
     if (token) {
@@ -161,6 +180,7 @@ export const UserProvider = ({ children }) => {
         followUserHandler,
         unfollowUserHandler,
         getUserByUsername,
+        editUserProfile,
       }}
     >
       {children}
