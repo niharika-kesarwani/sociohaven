@@ -78,6 +78,7 @@ export const EditProfileModal = () => {
             Save
           </button>
         </div>
+
         <div className="relative">
           {backgroundImage !== "" ? (
             <img
@@ -90,12 +91,21 @@ export const EditProfileModal = () => {
           )}
           <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 gap-5 text-white">
             <label>
-              <div className="flex rounded-full bg-[gray] p-3 hover:cursor-pointer hover:bg-opacity-90">
+              <div
+                className="flex rounded-full bg-[gray] p-3 hover:cursor-pointer hover:bg-opacity-90"
+                title="Add photo"
+              >
                 <input
                   className="hidden hover:cursor-pointer"
-                  title="Add photo"
                   accept="image/*"
                   type="file"
+                  name="backgroundImage"
+                  onChange={(e) =>
+                    setFormDetails({
+                      ...formDetails,
+                      backgroundImage: URL.createObjectURL(e.target.files[0]),
+                    })
+                  }
                 />
                 <AddAPhotoIcon />
               </div>
@@ -117,13 +127,35 @@ export const EditProfileModal = () => {
           </div>
           <div>
             <img
-              className="absolute -bottom-8 left-2 h-16 w-16 rounded-full border-4 border-white lg:-bottom-10 lg:left-5 lg:h-32 lg:w-32"
+              className="absolute -bottom-10 left-2 h-20 w-20 rounded-full border-4 border-white object-cover lg:-bottom-12 lg:left-5 lg:h-32 lg:w-32"
               src={profileAvatar}
               alt="profile_image"
             />
+            <label className="absolute -bottom-5 left-7 text-white lg:-bottom-2 lg:left-[3.75rem]">
+              <div
+                className="flex rounded-full bg-[gray] p-2 hover:cursor-pointer hover:bg-opacity-90 lg:p-3"
+                title="Add photo"
+              >
+                <input
+                  className="hidden hover:cursor-pointer"
+                  title="Add photo"
+                  accept="image/*"
+                  type="file"
+                  name="profileAvatar"
+                  onChange={(e) =>
+                    setFormDetails({
+                      ...formDetails,
+                      profileAvatar: URL.createObjectURL(e.target.files[0]),
+                    })
+                  }
+                />
+                <AddAPhotoIcon />
+              </div>
+            </label>
           </div>
         </div>
-        <div className="flex flex-col gap-3 px-4 py-4 pt-8 text-left md:pt-10">
+
+        <div className="flex flex-col gap-3 px-4 py-4 pt-12 text-left">
           <div className="flex flex-col gap-2">
             <label>First Name</label>
             <input

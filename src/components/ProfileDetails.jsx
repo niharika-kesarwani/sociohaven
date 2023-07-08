@@ -42,7 +42,7 @@ export const ProfileDetails = ({ selectedUser }) => {
       {backgroundImage !== "" ? (
         <img
           src={backgroundImage}
-          className="w-full object-contain md:max-h-48"
+          className="max-h-24 w-full object-cover md:max-h-48"
           alt="background_image"
         />
       ) : (
@@ -50,7 +50,7 @@ export const ProfileDetails = ({ selectedUser }) => {
       )}
       <div className="relative flex p-3">
         <img
-          className="absolute -top-8 left-3 h-16 w-16 rounded-full border-2 border-white md:-top-16 md:left-5 md:h-32 md:w-32 md:border-4"
+          className="absolute -top-8 left-3 h-16 w-16 rounded-full border-2 border-white object-cover md:-top-16 md:left-5 md:h-32 md:w-32 md:border-4"
           src={profileAvatar}
           alt="profile_image"
         />{" "}
