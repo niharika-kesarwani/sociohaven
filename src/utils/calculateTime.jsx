@@ -48,10 +48,12 @@ export const calculateTime = (date) => {
       return `${currentMinutes - selectedMinutes} minute${
         currentMinutes - selectedMinutes > 1 ? "s" : ""
       } ago`;
-    } else {
+    } else if (currentSeconds - selectedSeconds >= 1) {
       return `${currentSeconds - selectedSeconds} second${
         currentSeconds - selectedSeconds > 1 ? "s" : ""
       } ago`;
+    } else {
+      return "now";
     }
   } else if (selectedYear === currentYear) {
     return `${months[selectedDate.getMonth()]} ${selectedDate.getDate()}`;
