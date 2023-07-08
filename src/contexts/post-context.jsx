@@ -56,7 +56,7 @@ export const PostProvider = ({ children }) => {
       } = response;
       if (status === 201) {
         setPost({ type: HANDLE_LIKE_POST, payload: posts });
-        toast.success("Liked post successfully!");
+        toast.success("Successfully liked post!");
       }
     } catch (err) {
       console.error(err);
@@ -72,7 +72,7 @@ export const PostProvider = ({ children }) => {
       } = response;
       if (status === 201) {
         setPost({ type: HANDLE_DISLIKE_POST, payload: posts });
-        toast.success("Disliked post successfully!");
+        toast.success("Successfully disliked post!");
       }
     } catch (err) {
       console.error(err);
@@ -88,7 +88,7 @@ export const PostProvider = ({ children }) => {
       } = response;
       if (status === 201) {
         setPost({ type: CREATE_POST, payload: posts });
-        toast.success("Created post successfully!");
+        toast.success("Successfully created post!");
       }
     } catch (err) {
       console.error(err);
@@ -104,7 +104,7 @@ export const PostProvider = ({ children }) => {
       } = response;
       if (status === 201) {
         setPost({ type: DELETE_POST, payload: posts });
-        toast.success("Deleted post successfully!");
+        toast.success("Successfully deleted post!");
       }
     } catch (err) {
       console.error(err);
@@ -120,7 +120,7 @@ export const PostProvider = ({ children }) => {
       } = response;
       if (status === 201) {
         setPost({ type: UPDATED_POSTS, payload: posts });
-        toast.success("Updated post successfully!");
+        toast.success("Successfully updated post!");
       }
     } catch (err) {
       console.error(err);

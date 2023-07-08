@@ -72,7 +72,7 @@ export const UserProvider = ({ children }) => {
       } = response;
       if (status === 200) {
         setUser({ type: ADD_TO_BOOKMARKS, payload: bookmarks });
-        toast.success("Added to bookmarks successfully!");
+        toast.success("Successfully added to bookmarks!");
       }
     } catch (err) {
       console.log(err);
@@ -89,7 +89,7 @@ export const UserProvider = ({ children }) => {
       if (status === 200) {
         setUser({ type: REMOVE_FROM_BOOKMARKS, payload: bookmarks });
         !doNotShowToast &&
-          toast.success("Removed from bookmarks successfully!");
+          toast.success("Successfully removed from bookmarks!");
       }
     } catch (err) {
       console.error(err);

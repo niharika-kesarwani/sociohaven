@@ -1,4 +1,5 @@
 import CloseIcon from "@mui/icons-material/Close";
+import CancelIcon from "@mui/icons-material/Cancel";
 import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
 import { useAuth, useUser } from "../index";
 import { userConstants } from "../constants/user-constants";
@@ -42,7 +43,10 @@ export const EditProfileModal = () => {
   };
 
   const formHandler = (e) =>
-    setFormDetails({ ...formDetails, [e.target.name]: e.target.value });
+    setFormDetails({
+      ...formDetails,
+      [e.currentTarget.name]: e.currentTarget.value,
+    });
 
   useEffect(() => {
     setFormDetails(updatedCurrentUser);
@@ -85,15 +89,17 @@ export const EditProfileModal = () => {
             <div className="h-24 w-full bg-[gray] bg-opacity-60 lg:h-48"></div>
           )}
           <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 gap-5 text-white">
-            <div className="flex rounded-full bg-[gray] p-3 hover:cursor-pointer hover:bg-opacity-90">
-              <input
-                className="hidden hover:cursor-pointer"
-                title="Add photo"
-                accept="image/*"
-                type="file"
-              />
-              <AddAPhotoIcon />
-            </div>
+            <label>
+              <div className="flex rounded-full bg-[gray] p-3 hover:cursor-pointer hover:bg-opacity-90">
+                <input
+                  className="hidden hover:cursor-pointer"
+                  title="Add photo"
+                  accept="image/*"
+                  type="file"
+                />
+                <AddAPhotoIcon />
+              </div>
+            </label>
             {backgroundImage !== "" && (
               <button
                 className="rounded-full bg-[gray] p-3 hover:cursor-pointer hover:bg-opacity-90"

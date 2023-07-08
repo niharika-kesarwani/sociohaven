@@ -121,7 +121,7 @@ export const AuthProvider = ({ children }) => {
     setToken(null);
     setCurrentUser(null);
     localStorage.removeItem("loginDetails");
-    toast.success("Logged out successfully!");
+    toast.success("Successfully logged out!");
     navigate(location?.state?.from?.pathname ?? "/");
   };
 
