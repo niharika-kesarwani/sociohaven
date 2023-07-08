@@ -18,6 +18,12 @@ export const ProfileFeed = () => {
     (post) => post?.username === selectedUser?.username
   );
 
+  const sortedDisplayUserPosts = [...displayUserPosts]?.sort((a, b) => {
+    const dateA = new Date(a.createdAt);
+    const dateB = new Date(b.createdAt);
+    return dateB - dateA;
+  });
+
   useEffect(() => {
     getUserByUsername(username);
   }, [username, getUserByUsername]);
@@ -27,7 +33,7 @@ export const ProfileFeed = () => {
       <div className="flex w-full max-w-lg flex-col items-start gap-5">
         <ProfileDetails selectedUser={selectedUser} />
         <ul className="flex flex-col gap-5 px-2 md:p-0">
-          {displayUserPosts?.map((post) => (
+          {sortedDisplayUserPosts?.map((post) => (
             <PostCard post={post} key={post?._id} />
           ))}
         </ul>

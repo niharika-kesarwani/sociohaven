@@ -51,7 +51,11 @@ export const PostCard = ({ post }) => {
         className="h-10 w-10 rounded-full hover:cursor-pointer"
         onClick={() => navigate(`/profile/${username}`)}
       >
-        <img src={profileAvatar} alt="profile" className="rounded-full" />
+        <img
+          src={profileAvatar}
+          alt="profile"
+          className="h-10 w-10 max-w-none rounded-full"
+        />
       </div>
       <div className="relative flex w-full flex-col items-start justify-between gap-1 md:gap-0">
         <div className="flex w-full items-start justify-between text-xs md:text-sm">

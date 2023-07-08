@@ -75,7 +75,7 @@ export const Navbar = () => {
             <img
               alt="profile_pic"
               src={profileAvatar}
-              className="h-6 w-6 rounded-full"
+              className="h-6 w-6 rounded-full object-cover"
             />
           </div>
           <span className="hidden text-lg font-bold lg:inline">Profile</span>
