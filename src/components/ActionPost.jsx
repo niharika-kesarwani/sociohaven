@@ -27,13 +27,18 @@ export const ActionPost = ({ selectedPost }) => {
   } = selectedPost;
 
   const sharePostHandler = () => {
-    navigator.clipboard.writeText(`https://sociohaven.netlify.app/post/${_id}`);
+    navigator.clipboard.writeText(
+      `https://sociohaven.netlify.app/profile/${username}`
+    );
     toast.success("Link copied to clipboard!");
   };
 
   return (
     <div className="mt-3 flex w-full items-center justify-between text-[gray] sm:w-auto sm:gap-14">
-      <div className="flex items-center gap-1 hover:cursor-pointer hover:text-primary">
+      <div
+        className="flex items-center gap-1 hover:cursor-pointer hover:text-primary"
+        onClick={() => toast.success("To be implemented soon!")}
+      >
         <ChatBubbleOutlineOutlinedIcon />
         {comments?.length > 0 && <div>{comments?.length}</div>}
       </div>

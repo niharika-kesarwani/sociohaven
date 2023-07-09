@@ -3,8 +3,8 @@ import { Header } from "./Header";
 import { usePost, useUser } from "../index";
 import { postConstants } from "../constants/post-constants";
 import { AddNewPost } from "./AddNewPost";
-import { EditProfileModal } from "../modals/EditProfileModal";
 import { userConstants } from "../constants/user-constants";
+import { EditProfileForm } from "./EditProfileForm";
 
 export const PageWrapper = ({ children }) => {
   const {
@@ -43,7 +43,7 @@ export const PageWrapper = ({ children }) => {
             setUser({ type: SET_SHOW_EDIT_PROFILE_MODAL, payload: false })
           }
         >
-          <EditProfileModal />
+          <EditProfileForm />
         </div>
       )}
     </div>

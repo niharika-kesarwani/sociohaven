@@ -1,19 +1,20 @@
-import CloseIcon from "@mui/icons-material/Close";
-import CancelIcon from "@mui/icons-material/Cancel";
-import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
 import { useAuth, useUser } from "../index";
 import { userConstants } from "../constants/user-constants";
 import { useEffect, useState } from "react";
+import CloseIcon from "@mui/icons-material/Close";
+import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import { avatarImages } from "../utils/avatarImages";
 
-export const EditProfileModal = () => {
+export const EditProfileForm = () => {
   const { currentUser } = useAuth();
   const {
-    user: { allUsers },
+    user: { allUsers, showAvatarModal },
     setUser,
     editUserProfile,
   } = useUser();
   const [formDetails, setFormDetails] = useState({});
-  const { SET_SHOW_EDIT_PROFILE_MODAL } = userConstants;
+  const { SET_SHOW_EDIT_PROFILE_MODAL, SET_SHOW_AVATAR_MODAL } = userConstants;
 
   const updatedCurrentUser = allUsers?.find(
     ({ username }) => username === currentUser?.username
@@ -138,7 +139,6 @@ export const EditProfileModal = () => {
               >
                 <input
                   className="hidden hover:cursor-pointer"
-                  title="Add photo"
                   accept="image/*"
                   type="file"
                   name="profileAvatar"
@@ -153,28 +153,48 @@ export const EditProfileModal = () => {
               </div>
             </label>
           </div>
+          <div>
+            <img
+              className="absolute -bottom-10 right-2 h-20 w-20 rounded-full border-4 border-white object-cover lg:-bottom-12 lg:right-5 lg:h-32 lg:w-32"
+              src={profileAvatar}
+              alt="profile_image"
+            />
+            <label
+              className="absolute -bottom-5 right-7 text-white lg:-bottom-2 lg:right-[3.75rem]"
+              onClick={() =>
+                setUser({ type: SET_SHOW_AVATAR_MODAL, payload: true })
+              }
+              title="Add Avatar"
+            >
+              <div className="flex rounded-full bg-[gray] p-2 hover:cursor-pointer hover:bg-opacity-90 lg:p-3">
+                <PersonAddIcon />
+              </div>
+            </label>
+          </div>
         </div>
 
         <div className="flex flex-col gap-3 px-4 py-4 pt-12 text-left">
-          <div className="flex flex-col gap-2">
-            <label>First Name</label>
-            <input
-              type="text"
-              className="rounded-full border px-2 py-1"
-              defaultValue={firstName}
-              name="firstName"
-              onChange={(e) => formHandler(e)}
-            />
-          </div>
-          <div className="flex flex-col gap-2">
-            <label>Last Name</label>
-            <input
-              type="text"
-              className="rounded-full border px-2 py-1"
-              defaultValue={lastName}
-              name="lastName"
-              onChange={(e) => formHandler(e)}
-            />
+          <div className="flex flex-col justify-between gap-3 sm:flex-row">
+            <div className="flex grow flex-col gap-2">
+              <label>First Name</label>
+              <input
+                type="text"
+                className="rounded-full border px-2 py-1"
+                defaultValue={firstName}
+                name="firstName"
+                onChange={(e) => formHandler(e)}
+              />
+            </div>
+            <div className="flex grow flex-col gap-2">
+              <label>Last Name</label>
+              <input
+                type="text"
+                className="rounded-full border px-2 py-1"
+                defaultValue={lastName}
+                name="lastName"
+                onChange={(e) => formHandler(e)}
+              />
+            </div>
           </div>
           <div className="flex flex-col gap-2">
             <label>Bio</label>
@@ -197,6 +217,50 @@ export const EditProfileModal = () => {
             />
           </div>
         </div>
+
+        {showAvatarModal && (
+          <div
+            className="fixed inset-0 z-50 flex h-screen items-center justify-center bg-[black] bg-opacity-50"
+            onClick={() =>
+              setUser({ type: SET_SHOW_AVATAR_MODAL, payload: false })
+            }
+          >
+            <div
+              className="mx-2 flex w-full max-w-xs flex-col gap-5 rounded-lg bg-background px-3 py-4 text-xs lg:text-base"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex w-full items-center gap-5">
+                <div
+                  className="rounded-full p-2 hover:cursor-pointer hover:bg-secondary"
+                  onClick={() =>
+                    setUser({ type: SET_SHOW_AVATAR_MODAL, payload: false })
+                  }
+                >
+                  <CloseIcon />
+                </div>
+                <div className="grow text-start font-bold">
+                  Choose Your Avatar
+                </div>
+              </div>
+              <div className="flex flex-wrap items-center justify-center gap-5">
+                {avatarImages?.map((avatar) => (
+                  <div
+                    className="h-20 w-20 rounded-full hover:cursor-pointer hover:opacity-90"
+                    onClick={() => {
+                      setFormDetails({
+                        ...formDetails,
+                        profileAvatar: avatar,
+                      });
+                      setUser({ type: SET_SHOW_AVATAR_MODAL, payload: false });
+                    }}
+                  >
+                    <img src={avatar} className="rounded-full" alt={avatar} />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        )}
       </form>
     </div>
   );

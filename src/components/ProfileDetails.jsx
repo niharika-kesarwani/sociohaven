@@ -91,14 +91,16 @@ export const ProfileDetails = ({ selectedUser }) => {
             <div className="text-sm text-[gray]">@{username}</div>
           </div>
           <div>{bio}</div>
-          <NavLink
-            className="flex items-center gap-1"
-            to={website}
-            target="_blank"
-          >
-            <LinkIcon className="-rotate-45 text-[gray]" />
-            <span className="text-primary hover:underline">{website}</span>
-          </NavLink>
+          {website && (
+            <NavLink
+              className="flex items-center gap-1"
+              to={website}
+              target="_blank"
+            >
+              <LinkIcon className="-rotate-45 text-[gray]" />
+              <span className="text-primary hover:underline">{website}</span>
+            </NavLink>
+          )}
           <div className="flex gap-5">
             <div>
               <span className="font-bold">{following?.length}</span>{" "}
