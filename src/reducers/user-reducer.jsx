@@ -10,6 +10,7 @@ const {
   SET_SINGLE_USER,
   SET_SHOW_EDIT_PROFILE_MODAL,
   EDIT_USER_PROFILE,
+  SET_SHOW_AVATAR_MODAL,
 } = userConstants;
 
 export const userReducer = (state, { type, payload }) => {
@@ -42,6 +43,8 @@ export const userReducer = (state, { type, payload }) => {
           user._id === payload._id ? payload : user
         ),
       };
+    case SET_SHOW_AVATAR_MODAL:
+      return { ...state, showAvatarModal: payload };
     default:
       return state;
   }
@@ -52,4 +55,5 @@ export const initialUser = {
   allBookmarks: [],
   selectedUser: {},
   showEditProfileModal: false,
+  showAvatarModal: false,
 };
