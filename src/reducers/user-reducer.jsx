@@ -11,6 +11,8 @@ const {
   SET_SHOW_EDIT_PROFILE_MODAL,
   EDIT_USER_PROFILE,
   SET_SHOW_AVATAR_MODAL,
+  SET_SHOW_SEARCH_RESULTS,
+  SET_SEARCH_INPUT,
 } = userConstants;
 
 export const userReducer = (state, { type, payload }) => {
@@ -45,6 +47,10 @@ export const userReducer = (state, { type, payload }) => {
       };
     case SET_SHOW_AVATAR_MODAL:
       return { ...state, showAvatarModal: payload };
+    case SET_SHOW_SEARCH_RESULTS:
+      return { ...state, showSearchResults: payload };
+    case SET_SEARCH_INPUT:
+      return { ...state, searchInput: payload };
     default:
       return state;
   }
@@ -56,4 +62,6 @@ export const initialUser = {
   selectedUser: {},
   showEditProfileModal: false,
   showAvatarModal: false,
+  showSearchResults: false,
+  searchInput: "",
 };

@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../";
+import { userConstants } from "../constants/user-constants";
 
-export const SuggestedUserCard = ({ user }) => {
-  const { followUserHandler } = useUser();
+export const SuggestedUserCard = ({ user, searchResult }) => {
+  const { setUser, followUserHandler } = useUser();
+  const { SET_SHOW_SEARCH_RESULTS, SET_SEARCH_INPUT } = userConstants;
   const {
     _id,
     firstName,
@@ -23,31 +25,41 @@ export const SuggestedUserCard = ({ user }) => {
   return (
     <div
       key={_id}
-      className="flex items-center gap-4 rounded-2xl bg-background p-3"
+      className="flex items-center gap-4 rounded-2xl bg-background p-3 text-xs md:text-base"
     >
       <div
         className="flex h-10 w-10 items-center rounded-full hover:cursor-pointer"
-        onClick={() => navigate(`/profile/${username}`)}
+        onClick={() => {
+          navigate(`/profile/${username}`);
+          setUser({ type: SET_SHOW_SEARCH_RESULTS, payload: false });
+          setUser({ type: SET_SEARCH_INPUT, payload: "" });
+        }}
       >
         <img className="rounded-full" src={profileAvatar} alt="profile_pic" />
       </div>
       <div
         className="line-clamp-1 flex grow flex-col text-left hover:cursor-pointer"
-        onClick={() => navigate(`/profile/${username}`)}
+        onClick={() => {
+          navigate(`/profile/${username}`);
+          setUser({ type: SET_SHOW_SEARCH_RESULTS, payload: false });
+          setUser({ type: SET_SEARCH_INPUT, payload: "" });
+        }}
       >
         <div className="line-clamp-1 font-bold">
           {firstName} {lastName}
         </div>
         <div className="line-clamp-1 text-[gray]">@{username}</div>
       </div>
-      <div>
-        <button
-          className="rounded-full bg-secondary px-3 py-1 font-bold hover:cursor-pointer hover:bg-primary"
-          onClick={() => followUserHandler(_id)}
-        >
-          Follow
-        </button>
-      </div>
+      {!searchResult && (
+        <div>
+          <button
+            className="rounded-full bg-secondary px-3 py-1 font-bold hover:cursor-pointer hover:bg-primary"
+            onClick={() => followUserHandler(_id)}
+          >
+            Follow
+          </button>
+        </div>
+      )}
     </div>
   );
 };
