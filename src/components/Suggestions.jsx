@@ -21,7 +21,7 @@ export const Suggestions = () => {
 
   return (
     <>
-      <div className="hidden flex-col gap-5 overflow-y-auto p-5 large:flex">
+      <div className="hidden w-96 flex-col gap-5 overflow-y-auto p-5 large:flex">
         <div className="font-bold lg:text-xl">Suggested Users</div>
         {suggestedUsers?.length > 0 ? (
           <div className="flex flex-col gap-5">
@@ -30,7 +30,7 @@ export const Suggestions = () => {
             ))}
           </div>
         ) : (
-          <div className="w-80 pt-10 font-bold">No users!</div>
+          <div className="pt-10 font-bold">No users!</div>
         )}
       </div>
     </>

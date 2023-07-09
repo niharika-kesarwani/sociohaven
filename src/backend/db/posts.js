@@ -138,9 +138,7 @@ export const posts = [
   {
     _id: "a9a1c543-88d0-4d0d-9c68-28dc51e0c2c5",
     content: `🚀Finally completed my first #React ecommerce app! 💻 It's been a wild ride of learning and coding, but I'm super happy of the outcome. Grateful to @neogcamp 💙
-    Feedback & suggestions are highly appreciated! 💜
-    Live: https://eyesome.netlify.app   
-    Github repo: https://github.com/SandhyaR1007/eyesome-react`,
+    Feedback & suggestions are highly appreciated! 💜`,
     mediaURL:
       "https://res.cloudinary.com/dwdsvmvkq/video/upload/v1687274491/Social%20Media/HyDednSN9Ev0xiY5_ezewyz.mp4",
     likes: {

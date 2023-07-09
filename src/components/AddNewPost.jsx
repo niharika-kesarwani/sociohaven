@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { useAuth, usePost } from "../index";
 import { postConstants } from "../constants/post-constants";
+import { useNavigate } from "react-router-dom";
 
 export const AddNewPost = ({ modalClass }) => {
   const [postContent, setPostContent] = useState("");
   const {
-    currentUser: { profileAvatar },
+    currentUser: { username, profileAvatar },
   } = useAuth();
   const {
     post: { toEditPost },
@@ -13,6 +14,7 @@ export const AddNewPost = ({ modalClass }) => {
     createPostHandler,
     editPostHandler,
   } = usePost();
+  const navigate = useNavigate();
   const { SET_SHOW_ADD_NEW_POST_MODAL, EDIT_POST } = postConstants;
 
   const formSubmitHandler = (e) => {
@@ -35,11 +37,18 @@ export const AddNewPost = ({ modalClass }) => {
 
   return (
     <div
-      className={`flex w-full max-w-xl justify-between gap-3 rounded-lg bg-background p-5 md:mt-3 ${modalClass}`}
+      className={`flex w-full max-w-xl justify-between gap-3 rounded-lg bg-background p-3 md:mt-3 md:p-5 ${modalClass}`}
       onClick={(e) => e.stopPropagation()}
     >
-      <div className="h-10 w-10 rounded-full">
-        <img src={profileAvatar} alt="profile" className="rounded-full" />
+      <div
+        className="h-10 w-10 rounded-full hover:cursor-pointer"
+        onClick={() => navigate(`/profile/${username}`)}
+      >
+        <img
+          src={profileAvatar}
+          alt="profile"
+          className="h-10 w-10 max-w-none rounded-full object-cover"
+        />
       </div>
       <form
         className="flex w-full flex-col justify-between gap-5"

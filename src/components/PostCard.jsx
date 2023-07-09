@@ -4,12 +4,14 @@ import { calculateTime } from "../utils/calculateTime";
 import { useState } from "react";
 import { MoreInPost } from "./MoreInPost";
 import { ActionPost } from "./ActionPost";
+import { useNavigate } from "react-router-dom";
 
 export const PostCard = ({ post }) => {
   const {
     user: { allUsers },
   } = useUser();
   const [showMorePost, setShowMorePost] = useState(false);
+  const navigate = useNavigate();
 
   const {
     _id,
@@ -45,12 +47,22 @@ export const PostCard = ({ post }) => {
       className="flex w-full gap-2 break-words rounded-lg bg-background px-2 py-3 text-xs md:gap-3 md:px-3 md:pt-5 md:text-base"
       onClick={() => setShowMorePost(false)}
     >
-      <div className="h-10 w-10 rounded-full">
-        <img src={profileAvatar} alt="profile" className="rounded-full" />
+      <div
+        className="h-10 w-10 rounded-full hover:cursor-pointer"
+        onClick={() => navigate(`/profile/${username}`)}
+      >
+        <img
+          src={profileAvatar}
+          alt="profile"
+          className="h-10 w-10 max-w-none rounded-full"
+        />
       </div>
       <div className="relative flex w-full flex-col items-start justify-between gap-1 md:gap-0">
         <div className="flex w-full items-start justify-between text-xs md:text-sm">
-          <div className="flex flex-col items-start gap-x-1 sm:flex-row md:gap-1">
+          <div
+            className="flex flex-col items-start gap-x-1 hover:cursor-pointer sm:flex-row md:gap-1"
+            onClick={() => navigate(`/profile/${username}`)}
+          >
             <div className="font-bold">
               {firstName} {lastName}
             </div>

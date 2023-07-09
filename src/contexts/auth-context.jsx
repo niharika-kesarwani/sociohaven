@@ -72,6 +72,8 @@ export const AuthProvider = ({ children }) => {
     confirmPassword,
     firstName,
     lastName,
+    profileAvatar,
+    backgroundImage,
   }) => {
     if (password !== confirmPassword) {
       toast.error("Password fields are not matching!");
@@ -82,7 +84,9 @@ export const AuthProvider = ({ children }) => {
           username,
           password,
           firstName,
-          lastName
+          lastName,
+          profileAvatar,
+          backgroundImage
         );
 
         const {
@@ -121,7 +125,7 @@ export const AuthProvider = ({ children }) => {
     setToken(null);
     setCurrentUser(null);
     localStorage.removeItem("loginDetails");
-    toast.success("Logged out successfully!");
+    toast.success("Successfully logged out!");
     navigate(location?.state?.from?.pathname ?? "/");
   };
 
@@ -131,6 +135,7 @@ export const AuthProvider = ({ children }) => {
         token,
         currentUser,
         showPassword,
+        setCurrentUser,
         toggleLoginPassword,
         loginHandler,
         toggleSignUpPassword,

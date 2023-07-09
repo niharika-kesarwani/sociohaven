@@ -7,6 +7,8 @@ import {
   removeFromBookmarksHandlerService,
   followUserHandlerService,
   unfollowUserHandlerService,
+  getAllUsersHandlerService,
+  editUserProfileService,
 } from "../services/user-service";
 import { initialUser, userReducer } from "../reducers/user-reducer";
 import { userConstants } from "../constants/user-constants";
@@ -16,7 +18,7 @@ export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useReducer(userReducer, initialUser);
-  const { token } = useAuth();
+  const { token, setCurrentUser } = useAuth();
   const {
     GET_ALL_USERS,
     GET_ALL_BOOKMARKS,
@@ -24,6 +26,8 @@ export const UserProvider = ({ children }) => {
     REMOVE_FROM_BOOKMARKS,
     FOLLOW_USER,
     UNFOLLOW_USER,
+    SET_SINGLE_USER,
+    EDIT_USER_PROFILE,
   } = userConstants;
 
   const getAllUsersHandler = async () => {
@@ -68,7 +72,7 @@ export const UserProvider = ({ children }) => {
       } = response;
       if (status === 200) {
         setUser({ type: ADD_TO_BOOKMARKS, payload: bookmarks });
-        toast.success("Added to bookmarks successfully!");
+        toast.success("Successfully added to bookmarks!");
       }
     } catch (err) {
       console.log(err);
@@ -85,7 +89,7 @@ export const UserProvider = ({ children }) => {
       if (status === 200) {
         setUser({ type: REMOVE_FROM_BOOKMARKS, payload: bookmarks });
         !doNotShowToast &&
-          toast.success("Removed from bookmarks successfully!");
+          toast.success("Successfully removed from bookmarks!");
       }
     } catch (err) {
       console.error(err);
@@ -124,12 +128,44 @@ export const UserProvider = ({ children }) => {
     }
   };
 
+  const getUserByUsername = async (username) => {
+    try {
+      const response = await getAllUsersHandlerService(username);
+      const {
+        status,
+        data: { user },
+      } = response;
+      if (status === 200) {
+        setUser({ type: SET_SINGLE_USER, payload: user });
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const editUserProfile = async (userData) => {
+    try {
+      const response = await editUserProfileService(userData, token);
+      const {
+        status,
+        data: { user },
+      } = response;
+      if (status === 201) {
+        setUser({ type: EDIT_USER_PROFILE, payload: user });
+        setCurrentUser(user);
+        toast.success("Successfully updated profile!");
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   useEffect(() => {
     getAllUsersHandler();
     if (token) {
       getAllBookmarksHandler();
     }
-  }, []);
+  }, [token]);
 
   return (
     <UserContext.Provider
@@ -143,6 +179,8 @@ export const UserProvider = ({ children }) => {
         removeFromBookmarksHandler,
         followUserHandler,
         unfollowUserHandler,
+        getUserByUsername,
+        editUserProfile,
       }}
     >
       {children}

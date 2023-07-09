@@ -1,3 +1,4 @@
+import SearchIcon from "@mui/icons-material/Search";
 import { NavLink } from "react-router-dom";
 import favicon from "../assets/favicon.png";
 
@@ -11,12 +12,17 @@ export const Header = () => {
             Sociohaven
           </h1>
         </NavLink>
-        <div className="flex w-full max-w-sm px-3 md:w-auto lg:w-full">
-          <input
-            type="text"
-            className="w-full rounded-2xl border px-5 py-1"
-            placeholder="Search here..."
-          />
+        <div className="relative flex w-full max-w-sm px-3 md:w-auto lg:w-full">
+          <label className="w-full">
+            <input
+              type="text"
+              className="w-full rounded-full bg-background px-10 py-1.5 text-[black]"
+              placeholder="Search here..."
+            />
+          </label>
+          <div className="absolute left-0 top-1/2 -translate-y-1/2 translate-x-1/2 p-1.5 text-[gray]">
+            <SearchIcon />
+          </div>
         </div>
       </div>
     </div>

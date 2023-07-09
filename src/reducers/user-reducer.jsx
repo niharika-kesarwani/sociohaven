@@ -7,28 +7,40 @@ const {
   REMOVE_FROM_BOOKMARKS,
   FOLLOW_USER,
   UNFOLLOW_USER,
+  SET_SINGLE_USER,
+  SET_SHOW_EDIT_PROFILE_MODAL,
+  EDIT_USER_PROFILE,
 } = userConstants;
 
-export const userReducer = (state, action) => {
-  switch (action.type) {
+export const userReducer = (state, { type, payload }) => {
+  switch (type) {
     case GET_ALL_USERS:
-      return { ...state, allUsers: action.payload };
+      return { ...state, allUsers: payload };
     case GET_ALL_BOOKMARKS:
-      return { ...state, allBookmarks: action.payload };
+      return { ...state, allBookmarks: payload };
     case ADD_TO_BOOKMARKS:
-      return { ...state, allBookmarks: action.payload };
+      return { ...state, allBookmarks: payload };
     case REMOVE_FROM_BOOKMARKS:
-      return { ...state, allBookmarks: action.payload };
+      return { ...state, allBookmarks: payload };
     case FOLLOW_USER:
     case UNFOLLOW_USER:
       return {
         ...state,
         allUsers: state?.allUsers?.map((user) => {
-          const changedUser = action.payload.find(
-            ({ _id }) => _id === user._id
-          );
+          const changedUser = payload.find(({ _id }) => _id === user._id);
           return changedUser ? changedUser : user;
         }),
+      };
+    case SET_SINGLE_USER:
+      return { ...state, selectedUser: payload };
+    case SET_SHOW_EDIT_PROFILE_MODAL:
+      return { ...state, showEditProfileModal: payload };
+    case EDIT_USER_PROFILE:
+      return {
+        ...state,
+        allUsers: state?.allUsers?.map((user) =>
+          user._id === payload._id ? payload : user
+        ),
       };
     default:
       return state;
@@ -38,4 +50,6 @@ export const userReducer = (state, action) => {
 export const initialUser = {
   allUsers: [],
   allBookmarks: [],
+  selectedUser: {},
+  showEditProfileModal: false,
 };
