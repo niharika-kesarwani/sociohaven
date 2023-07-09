@@ -32,7 +32,7 @@ export const ProfileFeed = () => {
     <div className="flex grow justify-center overflow-y-auto border-r pb-5 text-xs md:px-5 md:text-base">
       <div className="flex w-full max-w-lg flex-col items-start gap-5">
         <ProfileDetails selectedUser={selectedUser} />
-        <ul className="flex flex-col gap-5 px-2 md:p-0">
+        <ul className="flex w-full flex-col gap-5 px-2 md:p-0">
           {sortedDisplayUserPosts?.map((post) => (
             <PostCard post={post} key={post?._id} />
           ))}

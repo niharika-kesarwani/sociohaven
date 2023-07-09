@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import { defaultAvatar } from "../utils/avatarImages";
 
 export const SignUp = () => {
   const {
@@ -20,6 +21,8 @@ export const SignUp = () => {
     confirmPassword: "",
     firstName: "",
     lastName: "",
+    profileAvatar: defaultAvatar,
+    backgroundImage: "",
   });
 
   const handleInput = (e) =>

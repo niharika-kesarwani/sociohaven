@@ -165,7 +165,7 @@ export const UserProvider = ({ children }) => {
     if (token) {
       getAllBookmarksHandler();
     }
-  }, []);
+  }, [token]);
 
   return (
     <UserContext.Provider

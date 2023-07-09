@@ -38,7 +38,7 @@ export const ProfileDetails = ({ selectedUser }) => {
   );
 
   return (
-    <div>
+    <div className="w-full">
       {backgroundImage !== "" ? (
         <img
           src={backgroundImage}

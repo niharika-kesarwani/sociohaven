@@ -72,6 +72,8 @@ export const AuthProvider = ({ children }) => {
     confirmPassword,
     firstName,
     lastName,
+    profileAvatar,
+    backgroundImage,
   }) => {
     if (password !== confirmPassword) {
       toast.error("Password fields are not matching!");
@@ -82,7 +84,9 @@ export const AuthProvider = ({ children }) => {
           username,
           password,
           firstName,
-          lastName
+          lastName,
+          profileAvatar,
+          backgroundImage
         );
 
         const {
