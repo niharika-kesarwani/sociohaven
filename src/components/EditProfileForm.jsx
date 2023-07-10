@@ -55,7 +55,7 @@ export const EditProfileForm = () => {
 
   return (
     <div
-      className="mx-2 w-full max-w-xl rounded-lg bg-background py-3 text-xs lg:text-base"
+      className="mx-2 max-h-screen w-full max-w-lg overflow-y-auto rounded-lg bg-background py-3 text-xs lg:text-base"
       onClick={(e) => e.stopPropagation()}
     >
       <form
@@ -88,10 +88,10 @@ export const EditProfileForm = () => {
               alt="background_img"
             />
           ) : (
-            <div className="h-24 w-full bg-[gray] bg-opacity-60 lg:h-48"></div>
+            <div className="h-24 w-full bg-[gray] bg-opacity-60 lg:h-[10.5rem]"></div>
           )}
           <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 gap-5 text-white">
-            <label>
+            <label className="scale-75 lg:scale-100">
               <div
                 className="flex rounded-full bg-[gray] p-3 hover:cursor-pointer hover:bg-opacity-90"
                 title="Add photo"
@@ -113,7 +113,7 @@ export const EditProfileForm = () => {
             </label>
             {backgroundImage !== "" && (
               <button
-                className="rounded-full bg-[gray] p-3 hover:cursor-pointer hover:bg-opacity-90"
+                className="scale-75 rounded-full bg-[gray] p-3 hover:cursor-pointer hover:bg-opacity-90 lg:scale-100"
                 name="backgroundImage"
                 value=""
                 title="Remove photo"
@@ -128,11 +128,11 @@ export const EditProfileForm = () => {
           </div>
           <div>
             <img
-              className="absolute -bottom-10 left-2 h-20 w-20 rounded-full border-4 border-white object-cover lg:-bottom-12 lg:left-5 lg:h-32 lg:w-32"
+              className="absolute -bottom-10 left-5 h-20 w-20 rounded-full border-4 border-white object-cover lg:-bottom-12 lg:left-5 lg:h-32 lg:w-32"
               src={profileAvatar}
               alt="profile_image"
             />
-            <label className="absolute -bottom-5 left-7 text-white lg:-bottom-2 lg:left-[3.75rem]">
+            <label className="absolute -bottom-5 left-10 scale-75 text-white lg:-bottom-2 lg:left-[3.75rem] lg:scale-100">
               <div
                 className="flex rounded-full bg-[gray] p-2 hover:cursor-pointer hover:bg-opacity-90 lg:p-3"
                 title="Add photo"
@@ -155,12 +155,12 @@ export const EditProfileForm = () => {
           </div>
           <div>
             <img
-              className="absolute -bottom-10 right-2 h-20 w-20 rounded-full border-4 border-white object-cover lg:-bottom-12 lg:right-5 lg:h-32 lg:w-32"
+              className="absolute -bottom-10 right-5 h-20 w-20 rounded-full border-4 border-white object-cover lg:-bottom-12 lg:right-5 lg:h-32 lg:w-32"
               src={profileAvatar}
               alt="profile_image"
             />
             <label
-              className="absolute -bottom-5 right-7 text-white lg:-bottom-2 lg:right-[3.75rem]"
+              className="absolute -bottom-5 right-10 scale-75 text-white lg:-bottom-2 lg:right-[3.75rem] lg:scale-100"
               onClick={() =>
                 setUser({ type: SET_SHOW_AVATAR_MODAL, payload: true })
               }
@@ -173,13 +173,13 @@ export const EditProfileForm = () => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-3 px-4 py-4 pt-12 text-left">
+        <div className="flex flex-col gap-3 px-4 py-4 pt-10 text-left lg:pb-2 lg:pt-12 xl:pb-8 xl:pt-14">
           <div className="flex flex-col justify-between gap-3 sm:flex-row">
             <div className="flex grow flex-col gap-2">
               <label>First Name *</label>
               <input
                 type="text"
-                className="rounded-full border px-2 py-1"
+                className="rounded-lg border px-2 py-1"
                 defaultValue={firstName}
                 name="firstName"
                 onChange={(e) => formHandler(e)}
@@ -190,7 +190,7 @@ export const EditProfileForm = () => {
               <label>Last Name *</label>
               <input
                 type="text"
-                className="rounded-full border px-2 py-1"
+                className="rounded-lg border px-2 py-1"
                 defaultValue={lastName}
                 name="lastName"
                 onChange={(e) => formHandler(e)}
@@ -200,9 +200,9 @@ export const EditProfileForm = () => {
           </div>
           <div className="flex flex-col gap-2">
             <label>Bio</label>
-            <input
+            <textarea
               type="text"
-              className="rounded-full border px-2 py-1"
+              className="resize-none rounded-lg border px-2 py-1 lg:h-20"
               defaultValue={bio}
               name="bio"
               onChange={(e) => formHandler(e)}
@@ -212,7 +212,7 @@ export const EditProfileForm = () => {
             <label>Website</label>
             <input
               type="url"
-              className="rounded-full border px-2 py-1"
+              className="rounded-lg border px-2 py-1"
               defaultValue={website}
               name="website"
               onChange={(e) => formHandler(e)}
@@ -222,7 +222,7 @@ export const EditProfileForm = () => {
 
         {showAvatarModal && (
           <div
-            className="fixed inset-0 z-50 flex h-screen items-center justify-center bg-[black] bg-opacity-50"
+            className="fixed inset-0 z-50 flex h-screen items-center justify-center bg-[black] bg-opacity-50 p-5"
             onClick={() =>
               setUser({ type: SET_SHOW_AVATAR_MODAL, payload: false })
             }
