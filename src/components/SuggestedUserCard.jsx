@@ -26,24 +26,20 @@ export const SuggestedUserCard = ({ user, searchResult }) => {
     <div
       key={_id}
       className="flex items-center gap-4 rounded-2xl bg-background p-3 text-xs md:text-base"
+      onClick={() => {
+        setUser({ type: SET_SHOW_SEARCH_RESULTS, payload: false });
+        setUser({ type: SET_SEARCH_INPUT, payload: "" });
+      }}
     >
       <div
         className="flex h-10 w-10 items-center rounded-full hover:cursor-pointer"
-        onClick={() => {
-          navigate(`/profile/${username}`);
-          setUser({ type: SET_SHOW_SEARCH_RESULTS, payload: false });
-          setUser({ type: SET_SEARCH_INPUT, payload: "" });
-        }}
+        onClick={() => navigate(`/profile/${username}`)}
       >
         <img className="rounded-full" src={profileAvatar} alt="profile_pic" />
       </div>
       <div
         className="line-clamp-1 flex grow flex-col text-left hover:cursor-pointer"
-        onClick={() => {
-          navigate(`/profile/${username}`);
-          setUser({ type: SET_SHOW_SEARCH_RESULTS, payload: false });
-          setUser({ type: SET_SEARCH_INPUT, payload: "" });
-        }}
+        onClick={() => navigate(`/profile/${username}`)}
       >
         <div className="line-clamp-1 font-bold">
           {firstName} {lastName}

@@ -16,10 +16,20 @@ export const PageWrapper = ({ children }) => {
     setUser,
   } = useUser();
   const { SET_SHOW_ADD_NEW_POST_MODAL, EDIT_POST } = postConstants;
-  const { SET_SHOW_EDIT_PROFILE_MODAL } = userConstants;
+  const {
+    SET_SHOW_EDIT_PROFILE_MODAL,
+    SET_SHOW_SEARCH_RESULTS,
+    SET_SEARCH_INPUT,
+  } = userConstants;
 
   return (
-    <div className="flex h-screen w-full flex-col">
+    <div
+      className="flex h-screen w-full flex-col"
+      onClick={() => {
+        setUser({ type: SET_SHOW_SEARCH_RESULTS, payload: false });
+        setUser({ type: SET_SEARCH_INPUT, payload: "" });
+      }}
+    >
       <Header />
       <div className="relative mx-auto flex h-[88%] w-full max-w-screen-xl grow flex-col md:flex-row 3xl:h-auto">
         <div className="h-full w-full md:order-1">{children}</div>

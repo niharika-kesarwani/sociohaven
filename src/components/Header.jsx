@@ -25,6 +25,12 @@ export const Header = () => {
         );
 
   useEffect(() => {
+    if (searchResultsUsers?.length === 0) {
+      setUser({ type: SET_SHOW_SEARCH_RESULTS, payload: false });
+    }
+  }, [searchInput]);
+
+  useEffect(() => {
     setUser({ type: SET_SHOW_SEARCH_RESULTS, payload: false });
     setUser({ type: SET_SEARCH_INPUT, payload: "" });
   }, []);
@@ -34,11 +40,14 @@ export const Header = () => {
       <div className="mx-auto flex w-full max-w-screen-xl items-center justify-between gap-2 md:flex-row md:gap-3">
         <NavLink className="flex items-center gap-4" to="/">
           <img src={favicon} className="h-10 w-10 rounded-full" alt="logo" />
-          <h1 className="hidden text-2xl font-bold uppercase tracking-widest text-primary hover:cursor-pointer md:block lg:text-4xl">
+          <div className="hidden text-2xl font-bold uppercase tracking-widest text-primary hover:cursor-pointer md:block lg:text-4xl">
             Sociohaven
-          </h1>
+          </div>
         </NavLink>
-        <div className="relative flex w-full max-w-sm px-3 md:w-auto lg:w-full">
+        <div
+          className="relative flex w-full max-w-sm px-3 md:w-auto lg:w-full"
+          onClick={(e) => e.stopPropagation()}
+        >
           <label className="w-full">
             <input
               type="text"
