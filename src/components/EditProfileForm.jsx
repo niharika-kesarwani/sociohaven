@@ -176,23 +176,25 @@ export const EditProfileForm = () => {
         <div className="flex flex-col gap-3 px-4 py-4 pt-12 text-left">
           <div className="flex flex-col justify-between gap-3 sm:flex-row">
             <div className="flex grow flex-col gap-2">
-              <label>First Name</label>
+              <label>First Name *</label>
               <input
                 type="text"
                 className="rounded-full border px-2 py-1"
                 defaultValue={firstName}
                 name="firstName"
                 onChange={(e) => formHandler(e)}
+                required
               />
             </div>
             <div className="flex grow flex-col gap-2">
-              <label>Last Name</label>
+              <label>Last Name *</label>
               <input
                 type="text"
                 className="rounded-full border px-2 py-1"
                 defaultValue={lastName}
                 name="lastName"
                 onChange={(e) => formHandler(e)}
+                required
               />
             </div>
           </div>
@@ -209,7 +211,7 @@ export const EditProfileForm = () => {
           <div className="flex flex-col gap-2">
             <label>Website</label>
             <input
-              type="text"
+              type="url"
               className="rounded-full border px-2 py-1"
               defaultValue={website}
               name="website"
