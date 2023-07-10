@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
-import { avatarImages } from "../utils/avatarImages";
+import { defaultAvatar, avatarImages } from "../utils/avatarImages";
 
 export const EditProfileForm = () => {
   const { currentUser } = useAuth();
@@ -14,6 +14,8 @@ export const EditProfileForm = () => {
     editUserProfile,
   } = useUser();
   const [formDetails, setFormDetails] = useState({});
+  const [profileURL, setProfileURL] = useState("");
+  const [avatarURL, setAvatarURL] = useState(defaultAvatar);
   const { SET_SHOW_EDIT_PROFILE_MODAL, SET_SHOW_AVATAR_MODAL } = userConstants;
 
   const updatedCurrentUser = allUsers?.find(
@@ -51,6 +53,7 @@ export const EditProfileForm = () => {
 
   useEffect(() => {
     setFormDetails(updatedCurrentUser);
+    setProfileURL(updatedCurrentUser?.profileAvatar);
   }, []);
 
   return (
@@ -129,7 +132,7 @@ export const EditProfileForm = () => {
           <div>
             <img
               className="absolute -bottom-10 left-5 h-20 w-20 rounded-full border-4 border-white object-cover lg:-bottom-12 lg:left-5 lg:h-32 lg:w-32"
-              src={profileAvatar}
+              src={profileURL}
               alt="profile_image"
             />
             <label className="absolute -bottom-5 left-10 scale-75 text-white lg:-bottom-2 lg:left-[3.75rem] lg:scale-100">
@@ -142,12 +145,13 @@ export const EditProfileForm = () => {
                   accept="image/*"
                   type="file"
                   name="profileAvatar"
-                  onChange={(e) =>
+                  onChange={(e) => {
+                    setProfileURL(URL.createObjectURL(e.target.files[0]));
                     setFormDetails({
                       ...formDetails,
                       profileAvatar: URL.createObjectURL(e.target.files[0]),
-                    })
-                  }
+                    });
+                  }}
                 />
                 <AddAPhotoIcon />
               </div>
@@ -156,7 +160,7 @@ export const EditProfileForm = () => {
           <div>
             <img
               className="absolute -bottom-10 right-5 h-20 w-20 rounded-full border-4 border-white object-cover lg:-bottom-12 lg:right-5 lg:h-32 lg:w-32"
-              src={profileAvatar}
+              src={avatarURL}
               alt="profile_image"
             />
             <label
@@ -173,7 +177,7 @@ export const EditProfileForm = () => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-3 px-4 py-4 pt-10 text-left lg:pb-2 lg:pt-12 xl:pb-8 xl:pt-14">
+        <div className="flex flex-col gap-3 px-4 pb-4 pt-10 text-left lg:pb-2 lg:pt-12 xl:pb-8 xl:pt-14">
           <div className="flex flex-col justify-between gap-3 sm:flex-row">
             <div className="flex grow flex-col gap-2">
               <label>First Name *</label>
@@ -249,6 +253,7 @@ export const EditProfileForm = () => {
                   <div
                     className="h-20 w-20 rounded-full bg-[gray] bg-opacity-50 hover:cursor-pointer hover:opacity-90"
                     onClick={() => {
+                      setAvatarURL(avatar);
                       setFormDetails({
                         ...formDetails,
                         profileAvatar: avatar,

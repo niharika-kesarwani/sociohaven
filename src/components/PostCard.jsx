@@ -54,7 +54,7 @@ export const PostCard = ({ post }) => {
         <img
           src={profileAvatar}
           alt="profile"
-          className="h-10 w-10 max-w-none rounded-full"
+          className="h-10 w-10 max-w-none rounded-full object-cover"
         />
       </div>
       <div className="relative flex w-full flex-col items-start justify-between gap-1 md:gap-0">
