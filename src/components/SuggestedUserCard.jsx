@@ -49,7 +49,7 @@ export const SuggestedUserCard = ({ user, searchResult }) => {
       {!searchResult && (
         <div>
           <button
-            className="rounded-full bg-secondary px-3 py-1 font-bold hover:cursor-pointer hover:bg-primary"
+            className="rounded-full bg-secondary px-4 py-2 font-bold hover:cursor-pointer hover:bg-primary hover:text-white"
             onClick={() => followUserHandler(_id)}
           >
             Follow

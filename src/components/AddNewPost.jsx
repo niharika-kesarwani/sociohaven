@@ -66,7 +66,7 @@ export const AddNewPost = ({ modalClass }) => {
           onChange={(e) => setPostContent(e.target.value)}
         />
         <button
-          className={`w-fit self-end rounded-3xl bg-secondary px-5 py-2 font-bold uppercase tracking-widest hover:cursor-pointer ${
+          className={`w-fit self-end rounded-3xl bg-secondary px-5 py-2 font-bold tracking-widest hover:cursor-pointer ${
             postContent !== "" && "hover:bg-primary"
           }`}
           type="submit"
