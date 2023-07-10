@@ -247,7 +247,7 @@ export const EditProfileForm = () => {
               <div className="flex flex-wrap items-center justify-center gap-5">
                 {avatarImages?.map((avatar) => (
                   <div
-                    className="h-20 w-20 rounded-full hover:cursor-pointer hover:opacity-90"
+                    className="h-20 w-20 rounded-full bg-[gray] bg-opacity-50 hover:cursor-pointer hover:opacity-90"
                     onClick={() => {
                       setFormDetails({
                         ...formDetails,
