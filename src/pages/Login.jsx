@@ -89,12 +89,15 @@ export const Login = () => {
             >
               Login with Test Credentials
             </button>
-            <NavLink to="/signup">
-              <button className="flex gap-5 self-center hover:text-primary">
-                <p>Don't have an account?</p>
+            <div className="flex gap-5 self-center">
+              <p>Don't have an account?</p>
+              <NavLink
+                to="/signup"
+                className="hover:cursor-pointer hover:text-primary hover:underline"
+              >
                 <p>Signup</p>
-              </button>
-            </NavLink>
+              </NavLink>
+            </div>
           </form>
         </div>
       </div>
