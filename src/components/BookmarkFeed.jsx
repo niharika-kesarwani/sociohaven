@@ -14,8 +14,16 @@ export const BookmarkFeed = () => {
 
   return (
     <div className="flex grow justify-center overflow-y-auto border-r px-3 py-5 md:px-5">
-      <div className="flex w-full max-w-lg flex-col items-start gap-5">
-        <div className="flex flex-col items-start">
+      <div
+        className={`flex w-full max-w-lg flex-col gap-5 ${
+          allBookmarks?.length > 0 ? "items-start" : "items-center"
+        }`}
+      >
+        <div
+          className={`flex flex-col ${
+            allBookmarks?.length > 0 ? "items-start" : "items-center"
+          }`}
+        >
           <div className="text-2xl font-bold">Bookmarks</div>
           <div className="text-sm text-[gray]">@{username}</div>
         </div>
@@ -27,7 +35,7 @@ export const BookmarkFeed = () => {
             })}
           </ul>
         ) : (
-          <div className="text-xl font-bold">No bookmarks added yet!</div>
+          <div className="pt-10 text-xl font-bold">No bookmarks added yet!</div>
         )}
       </div>
     </div>

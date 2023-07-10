@@ -54,11 +54,11 @@ export const PostCard = ({ post }) => {
         <img
           src={profileAvatar}
           alt="profile"
-          className="h-10 w-10 max-w-none rounded-full"
+          className="h-10 w-10 max-w-none rounded-full object-cover"
         />
       </div>
       <div className="relative flex w-full flex-col items-start justify-between gap-1 md:gap-0">
-        <div className="flex w-full items-start justify-between text-xs md:text-sm">
+        <div className="flex w-full items-center justify-between text-xs md:text-sm">
           <div
             className="flex flex-col items-start gap-x-1 hover:cursor-pointer sm:flex-row md:gap-1"
             onClick={() => navigate(`/profile/${username}`)}

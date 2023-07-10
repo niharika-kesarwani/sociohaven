@@ -58,7 +58,7 @@ export const ProfileDetails = ({ selectedUser }) => {
           {currentUser?.username === username ? (
             <div className="flex gap-2 self-end md:gap-5">
               <div
-                className="rounded-full border bg-background px-3 py-1 font-bold hover:cursor-pointer hover:bg-primary md:px-4 md:py-2"
+                className="rounded-full border bg-background px-3 py-1 font-bold hover:cursor-pointer hover:bg-primary hover:text-white md:px-4 md:py-2"
                 onClick={() =>
                   setUser({ type: SET_SHOW_EDIT_PROFILE_MODAL, payload: true })
                 }
@@ -69,14 +69,14 @@ export const ProfileDetails = ({ selectedUser }) => {
                 title={token ? "Log out" : "Log in"}
                 to={!token && "/login"}
                 onClick={token && logoutHandler}
-                className="rounded-full border bg-background px-3 py-1 font-bold hover:cursor-pointer hover:bg-primary md:px-4 md:py-2"
+                className="rounded-full border bg-background px-3 py-1 font-bold hover:cursor-pointer hover:bg-primary hover:text-white md:px-4 md:py-2"
               >
                 Logout
               </NavLink>
             </div>
           ) : (
             <div
-              className="self-end rounded-full border bg-background px-3 py-1 font-bold hover:cursor-pointer hover:bg-primary md:px-4 md:py-2"
+              className="self-end rounded-full border bg-background px-3 py-1 font-bold hover:cursor-pointer hover:bg-primary hover:text-white md:px-4 md:py-2"
               onClick={() =>
                 isFollowing ? unfollowUserHandler(_id) : followUserHandler(_id)
               }

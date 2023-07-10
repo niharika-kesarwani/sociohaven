@@ -30,7 +30,7 @@ export const MoreInPost = ({
 
   return (
     <div
-      className="absolute -top-1 right-0 overflow-hidden rounded bg-secondary"
+      className="absolute right-1 top-6 overflow-hidden rounded bg-secondary"
       onClick={(e) => e.stopPropagation()}
     >
       {updatedCurrentUser?.username === username ? (
@@ -48,7 +48,7 @@ export const MoreInPost = ({
             <div>Edit</div>
           </div>
           <div
-            className="flex w-full items-center gap-3 px-3 py-2 text-[red] hover:cursor-pointer hover:bg-primary"
+            className="flex w-full items-center gap-3 px-3 py-2 hover:cursor-pointer hover:bg-primary"
             onClick={() => {
               deletePostHandler(selectedPost._id);
               removeFromBookmarksHandler(selectedPost._id, true);

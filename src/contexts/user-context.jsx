@@ -13,12 +13,14 @@ import {
 import { initialUser, userReducer } from "../reducers/user-reducer";
 import { userConstants } from "../constants/user-constants";
 import { useAuth } from "../index";
+import { useNavigate } from "react-router-dom";
 
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useReducer(userReducer, initialUser);
   const { token, setCurrentUser } = useAuth();
+  const navigate = useNavigate();
   const {
     GET_ALL_USERS,
     GET_ALL_BOOKMARKS,
@@ -139,6 +141,8 @@ export const UserProvider = ({ children }) => {
         setUser({ type: SET_SINGLE_USER, payload: user });
       }
     } catch (err) {
+      navigate("/login");
+      toast.error("Please login again!");
       console.error(err);
     }
   };

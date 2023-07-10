@@ -72,7 +72,7 @@ export const PostProvider = ({ children }) => {
       } = response;
       if (status === 201) {
         setPost({ type: HANDLE_DISLIKE_POST, payload: posts });
-        toast.success("Successfully disliked post!");
+        toast.success("Successfully unliked post!");
       }
     } catch (err) {
       console.error(err);

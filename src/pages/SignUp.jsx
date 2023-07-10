@@ -141,20 +141,25 @@ export const SignUp = () => {
                 name="signUp_label_accept"
                 required
               />
-              <h3>I accept terms and conditions</h3>
+              <div>I accept terms and conditions</div>
             </div>
             <button
               type="submit"
               className="rounded border border-primary bg-secondary py-1 hover:bg-primary"
             >
-              <h3>Sign Up</h3>
+              <div>Sign Up</div>
             </button>
-            <NavLink to="/login">
-              <button className="flex gap-5 self-center hover:text-primary">
-                <h3>Already have an account? Login</h3>
+
+            <button className="flex gap-5 self-center">
+              <div>Already have an account?</div>
+              <NavLink
+                to="/login"
+                className="flex hover:cursor-pointer hover:text-primary hover:underline"
+              >
+                <div>Login</div>
                 <ChevronRightIcon />
-              </button>
-            </NavLink>
+              </NavLink>
+            </button>
           </form>
         </div>
       </div>

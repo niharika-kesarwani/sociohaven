@@ -27,7 +27,7 @@ export const PostFeed = () => {
   );
 
   return (
-    <div className="flex grow justify-center overflow-y-auto border-r px-3 py-5 md:px-5">
+    <div className="flex grow justify-center overflow-y-auto border-r px-3 py-5 text-xs md:px-5 md:text-base">
       <div className="flex w-full max-w-lg flex-col gap-5">
         <AddNewPost />
         <div className="flex justify-around bg-background">
@@ -52,11 +52,18 @@ export const PostFeed = () => {
             Trending
           </div>
         </div>
-        <ul className="flex flex-col gap-5">
-          {sortedPosts(displayPosts)?.map((post) => (
-            <PostCard post={post} key={post?._id} />
-          ))}
-        </ul>
+        {displayPosts.length > 0 ? (
+          <ul className="flex flex-col gap-5">
+            {sortedPosts(displayPosts)?.map((post) => (
+              <PostCard post={post} key={post?._id} />
+            ))}
+          </ul>
+        ) : (
+          <div className="flex flex-col gap-4 pt-10 font-bold">
+            <div>No posts available yet!</div>
+            <div>Start following people to fill up your feed!</div>
+          </div>
+        )}
       </div>
     </div>
   );

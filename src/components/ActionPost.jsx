@@ -60,8 +60,8 @@ export const ActionPost = ({ selectedPost }) => {
         <div>{likeCount > 0 && calculateLikes(likeCount)}</div>
       </div>
       <div
-        className={`hover:cursor-pointer hover:text-[green] ${
-          isPostBookmarked(_id) ? "text-[green]" : null
+        className={`hover:cursor-pointer hover:text-[black] ${
+          isPostBookmarked(_id) ? "text-[black]" : null
         }`}
         onClick={() =>
           isPostBookmarked(_id)

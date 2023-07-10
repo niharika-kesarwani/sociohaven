@@ -37,7 +37,7 @@ export const AddNewPost = ({ modalClass }) => {
 
   return (
     <div
-      className={`flex w-full max-w-xl justify-between gap-3 rounded-lg bg-background p-3 md:mt-3 md:p-5 ${modalClass}`}
+      className={`flex w-full max-w-xl justify-between gap-3 rounded-lg bg-background p-3 text-xs md:mt-3 md:p-5 md:text-base ${modalClass}`}
       onClick={(e) => e.stopPropagation()}
     >
       <div
@@ -57,7 +57,7 @@ export const AddNewPost = ({ modalClass }) => {
         <textarea
           id="textarea"
           value={postContent}
-          placeholder="What is happening?!"
+          placeholder={`What is happening?!${"\n"}(Use Win + . or ⌘ + ^ + space for emojis)`}
           className="max-h-44 w-full grow resize-none rounded-lg p-2"
           onInput={(event) => {
             event.target.style.height = "auto";
@@ -66,12 +66,12 @@ export const AddNewPost = ({ modalClass }) => {
           onChange={(e) => setPostContent(e.target.value)}
         />
         <button
-          className={`w-fit self-end rounded-3xl bg-secondary px-5 py-2 font-bold uppercase tracking-widest hover:cursor-pointer ${
+          className={`w-fit self-end rounded-3xl bg-secondary px-5 py-2 font-bold tracking-widest hover:cursor-pointer ${
             postContent !== "" && "hover:bg-primary"
           }`}
           type="submit"
-          disabled={postContent === ""}
-          style={{ cursor: postContent === "" && "not-allowed" }}
+          disabled={postContent.trim() === ""}
+          style={{ cursor: postContent.trim() === "" && "not-allowed" }}
         >
           {toEditPost ? "Update" : "Post"}
         </button>
