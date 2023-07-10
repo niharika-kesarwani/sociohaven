@@ -600,14 +600,6 @@ export const users = [
     updatedAt: formatDate(),
     following: [
       {
-        _id: "9b8c3a76-9f14-47e3-8b48-4e2d30c48d3d",
-        firstName: "Tanay",
-        lastName: "Pratap",
-        username: "tanaypratap",
-        profileAvatar:
-          "https://res.cloudinary.com/dwdsvmvkq/image/upload/v1687267817/Social%20Media/V2ClCtWn_400x400_o4o5cz.jpg",
-      },
-      {
         _id: "c9d60bb1-7e05-4f9e-b843-17a16a49a925",
         firstName: "Anushka",
         lastName: "Jaiswal",
@@ -622,14 +614,6 @@ export const users = [
         username: "shaaaviii",
         profileAvatar:
           "https://res.cloudinary.com/dwdsvmvkq/image/upload/v1687264816/Social%20Media/K208VQ40_400x400_rxkhbv.jpg",
-      },
-      {
-        _id: "ebc81259-10e1-402b-8dc5-62e724af4e0f",
-        firstName: "Kavitha",
-        lastName: "M D",
-        username: "BeingPoem",
-        profileAvatar:
-          "https://res.cloudinary.com/dwdsvmvkq/image/upload/v1687265025/Social%20Media/bO9xVF0B_400x400_mt0rv1.jpg",
       },
       {
         _id: "6f275b38-61a1-4d75-9a22-ef228f83f0a1",

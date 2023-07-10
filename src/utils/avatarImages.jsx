@@ -1,3 +1,6 @@
+export const loginImage =
+  "https://res.cloudinary.com/dwdsvmvkq/image/upload/v1688979658/login_pic_w3ncq7.jpg";
+
 export const defaultAvatar =
   "https://res.cloudinary.com/dwdsvmvkq/image/upload/v1688865592/girl_190613_pvk0yz.png";
 
