@@ -70,8 +70,8 @@ export const AddNewPost = ({ modalClass }) => {
             postContent !== "" && "hover:bg-primary"
           }`}
           type="submit"
-          disabled={postContent === ""}
-          style={{ cursor: postContent === "" && "not-allowed" }}
+          disabled={postContent.trim() === ""}
+          style={{ cursor: postContent.trim() === "" && "not-allowed" }}
         >
           {toEditPost ? "Update" : "Post"}
         </button>
