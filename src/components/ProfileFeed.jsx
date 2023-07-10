@@ -32,11 +32,18 @@ export const ProfileFeed = () => {
     <div className="flex grow justify-center overflow-y-auto border-r pb-5 text-xs md:px-5 md:text-base">
       <div className="flex w-full max-w-lg flex-col items-start gap-5">
         <ProfileDetails selectedUser={selectedUser} />
-        <ul className="flex w-full flex-col gap-5 px-2 md:p-0">
-          {sortedDisplayUserPosts?.map((post) => (
-            <PostCard post={post} key={post?._id} />
-          ))}
-        </ul>
+        {sortedDisplayUserPosts.length > 0 ? (
+          <ul className="flex w-full flex-col gap-5 px-2 md:p-0">
+            {sortedDisplayUserPosts?.map((post) => (
+              <PostCard post={post} key={post?._id} />
+            ))}
+          </ul>
+        ) : (
+          <div className="flex w-full flex-col gap-3 pt-5 font-bold">
+            <div>No posts!</div>
+            <div>Create a new post to fill up your feed!</div>
+          </div>
+        )}
       </div>
     </div>
   );
