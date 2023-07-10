@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
 
   const localStorageToken = JSON.parse(localStorage.getItem("loginDetails"));
 
-  const [token, setToken] = useState(localStorageToken?.token);
+  const [token, setToken] = useState(localStorageToken?.token || "");
   const [currentUser, setCurrentUser] = useState(localStorageToken?.user);
   const navigate = useNavigate();
   const location = useLocation();
