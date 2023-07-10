@@ -32,8 +32,10 @@ export const PostFeed = () => {
         <AddNewPost />
         <div className="flex justify-around bg-background">
           <div
-            className={`h-full w-full py-3 font-bold hover:cursor-pointer hover:bg-secondary ${
-              selectedSort === "Latest" ? "bg-primary" : null
+            className={`h-full w-full rounded-l-lg py-3 font-bold tracking-widest hover:cursor-pointer ${
+              selectedSort === "Latest"
+                ? "bg-primary text-white"
+                : "bg-secondary"
             }`}
             onClick={() =>
               setPost({ type: SET_SELECTED_SORT, payload: "Latest" })
@@ -42,8 +44,10 @@ export const PostFeed = () => {
             Latest
           </div>
           <div
-            className={`h-full w-full py-3 font-bold hover:cursor-pointer hover:bg-secondary ${
-              selectedSort === "Trending" ? "bg-primary" : null
+            className={`h-full w-full rounded-r-lg py-3 font-bold tracking-widest hover:cursor-pointer ${
+              selectedSort === "Trending"
+                ? "bg-primary text-white"
+                : "bg-secondary"
             }`}
             onClick={() =>
               setPost({ type: SET_SELECTED_SORT, payload: "Trending" })

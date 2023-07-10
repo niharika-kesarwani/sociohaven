@@ -58,15 +58,15 @@ export const AddNewPost = ({ modalClass }) => {
           id="textarea"
           value={postContent}
           placeholder={`What is happening?!${"\n"}(Use Win + . or ⌘ + ^ + space for emojis)`}
-          className="max-h-44 w-full grow resize-none rounded-lg p-2"
+          className="h-24 max-h-44 w-full grow resize-none rounded-lg p-2"
           onInput={(event) => {
-            event.target.style.height = "auto";
+            event.target.style.height = "96px";
             event.target.style.height = `${event.target.scrollHeight}px`;
           }}
           onChange={(e) => setPostContent(e.target.value)}
         />
         <button
-          className={`w-fit self-end rounded-3xl bg-secondary px-5 py-2 font-bold tracking-widest hover:cursor-pointer ${
+          className={`w-fit self-end rounded-3xl bg-secondary px-5 py-2 font-bold tracking-widest hover:cursor-pointer hover:text-white ${
             postContent !== "" && "hover:bg-primary"
           }`}
           type="submit"

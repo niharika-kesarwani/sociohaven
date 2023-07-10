@@ -36,7 +36,7 @@ export const MoreInPost = ({
       {updatedCurrentUser?.username === username ? (
         <div className="over flex flex-col items-start font-bold">
           <div
-            className="flex w-full items-center gap-3 px-3 py-2 hover:cursor-pointer hover:bg-primary"
+            className="flex w-full items-center gap-3 px-3 py-2 hover:cursor-pointer hover:bg-primary hover:text-white"
             onClick={() => {
               setPost({ type: EDIT_POST, payload: selectedPost });
               setPost({ type: SET_SHOW_ADD_NEW_POST_MODAL, payload: true });
@@ -48,7 +48,7 @@ export const MoreInPost = ({
             <div>Edit</div>
           </div>
           <div
-            className="flex w-full items-center gap-3 px-3 py-2 hover:cursor-pointer hover:bg-primary"
+            className="flex w-full items-center gap-3 px-3 py-2 hover:cursor-pointer hover:bg-primary hover:text-white"
             onClick={() => {
               deletePostHandler(selectedPost._id);
               removeFromBookmarksHandler(selectedPost._id, true);
@@ -62,7 +62,7 @@ export const MoreInPost = ({
         </div>
       ) : isFollower ? (
         <div
-          className="flex w-full items-center gap-3 px-3 py-2 hover:cursor-pointer hover:bg-primary"
+          className="flex w-full items-center gap-3 px-3 py-2 hover:cursor-pointer hover:bg-primary hover:text-white"
           onClick={() => unfollowUserHandler(_id)}
         >
           <div>
@@ -72,7 +72,7 @@ export const MoreInPost = ({
         </div>
       ) : (
         <div
-          className="flex w-full items-center gap-3 px-3 py-2 hover:cursor-pointer hover:bg-primary"
+          className="flex w-full items-center gap-3 px-3 py-2 hover:cursor-pointer hover:bg-primary hover:text-white"
           onClick={() => followUserHandler(_id)}
         >
           <div>

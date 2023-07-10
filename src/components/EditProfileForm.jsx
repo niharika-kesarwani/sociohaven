@@ -183,7 +183,7 @@ export const EditProfileForm = () => {
               <label>First Name *</label>
               <input
                 type="text"
-                className="rounded-lg border px-2 py-1"
+                className="rounded-lg border px-2 py-[0.4rem]"
                 defaultValue={firstName}
                 name="firstName"
                 onChange={(e) => formHandler(e)}
@@ -194,7 +194,7 @@ export const EditProfileForm = () => {
               <label>Last Name *</label>
               <input
                 type="text"
-                className="rounded-lg border px-2 py-1"
+                className="rounded-lg border px-2 py-[0.4rem]"
                 defaultValue={lastName}
                 name="lastName"
                 onChange={(e) => formHandler(e)}
@@ -206,7 +206,7 @@ export const EditProfileForm = () => {
             <label>Bio</label>
             <textarea
               type="text"
-              className="resize-none rounded-lg border px-2 py-1 lg:h-20"
+              className="resize-none rounded-lg border px-2 py-[0.4rem] lg:h-20"
               defaultValue={bio}
               name="bio"
               onChange={(e) => formHandler(e)}
@@ -216,7 +216,7 @@ export const EditProfileForm = () => {
             <label>Website</label>
             <input
               type="url"
-              className="rounded-lg border px-2 py-1"
+              className="rounded-lg border px-2 py-[0.4rem]"
               defaultValue={website}
               name="website"
               onChange={(e) => formHandler(e)}
