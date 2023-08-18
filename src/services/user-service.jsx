@@ -35,7 +35,7 @@ export const unfollowUserHandlerService = async (followUserId, token) =>
     { headers: { authorization: token } }
   );
 
-export const getAllUsersHandlerService = async (username) =>
+export const getSingleUserHandlerService = async (username) =>
   await axios.get(`/api/users/${username}`);
 
 export const editUserProfileService = async (userData, token) =>

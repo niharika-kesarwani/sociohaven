@@ -7,7 +7,7 @@ import {
   removeFromBookmarksHandlerService,
   followUserHandlerService,
   unfollowUserHandlerService,
-  getAllUsersHandlerService,
+  getSingleUserHandlerService,
   editUserProfileService,
 } from "../services/user-service";
 import { initialUser, userReducer } from "../reducers/user-reducer";
@@ -132,7 +132,7 @@ export const UserProvider = ({ children }) => {
 
   const getUserByUsername = async (username) => {
     try {
-      const response = await getAllUsersHandlerService(username);
+      const response = await getSingleUserHandlerService(username);
       const {
         status,
         data: { user },
