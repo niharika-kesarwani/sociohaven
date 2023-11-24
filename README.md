@@ -4,6 +4,8 @@
 
 A social media website where you can connect with your friends!
 
+![image](https://github.com/niharika-kesarwani/sociohaven/assets/45658446/a7d85545-5bcf-4581-898b-c92fd3a7867e)
+
 ---
 
 ## INSTALLATION
